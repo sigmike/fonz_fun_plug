@@ -110,17 +110,19 @@ eval PR=$(cat $X/PR)
 P=${PN}-${PV}
 PF=${PN}-${PV}-${PR}
 
+FILESDIR=$X/files
+
 WORKDIR=$TOPDIR/work/$P
 D=$WORKDIR/pkg
 
 
 # distfiles
+A=
 # If present, we use SRC_URI to create the default list of
 # source archives (A)
 SRC_URI=
 [ -r "$X/SRC_URI" ] && eval SRC_URI=\"$(cat $X/SRC_URI)\"
 if [ -n "$SRC_URI" ]; then
-	A=
 	for _uri in $SRC_URI; do
 		_f=$(basename $_uri)
 		if [ -n "$F_opt" ]; then
@@ -134,11 +136,8 @@ if [ -n "$SRC_URI" ]; then
 		fi
 		A="$A $_f"
 	done
-else
-	# if we don't have SRC_URI, A defaults to $P
-	A=$P
 fi
-# Buf if A is present, this has prioriy
+# If A is present, this has prioriy
 [ -r "$X/A" ] && eval A=\"$(cat $X/A)\"
 
 
@@ -240,7 +239,7 @@ done
 
 
 # check that we got $S directory
-check_required_dirs $S
+[ -n "$A" ] && check_required_dirs $S
 
 
 # now make build and destdir directories
@@ -296,7 +295,7 @@ if [ -r $X/make.sh ]; then
 	info "  make.sh ..."
 	cd $B
 	. $X/make.sh
-elif [ -r $B/Makefile -o $B/makefile ]; then
+elif [ -r $B/Makefile -o -r $B/makefile ]; then
 	info "  make ..."
 	cd $B
 	make $make_args
