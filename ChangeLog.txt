@@ -1,5 +1,8 @@
 +------------------------------------------------------------------------------+
 Sun Mar 30 21:38:57 CEST 2008
+	funplug-0.5 build scripts are now available via subversion. You can
+	download the latest revision with:
+	svn co svn://inreto.de/svn/dns323/funplug/trunk funplug
 ffp-scripts-0.5-12: Updated.
 	- Updated start/ntpd.sh. It now removes the rtc and daylight cronjobs.
 	- More changes to funpkg.

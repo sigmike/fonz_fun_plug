@@ -42,6 +42,10 @@ Getting started:
   and
     http://forum.dsmg600.info/f3-DNS-323-General-Discussion.html
 
+  The build scripts are available via subversion. You can download the
+  latest revision with:
+    svn co svn://inreto.de/svn/dns323/funplug/trunk funplug
+
 
 Release notes:
 
@@ -76,6 +80,3 @@ Release notes:
   libraries (e.g. to prevent disk accesses), use a package from here:
    http://www.inreto.de/dns323/utils/
   
-- If you run ntp, make sure to remove the rtc cronjobs. To remove
-  all cronjobs, simply do:
-   cat /dev/null | crontab -
