@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/ffp/bin/bash
 
 
 TOPDIR=$(cd ..; pwd)
@@ -17,6 +17,7 @@ usage()
 Usage: $(basename $0) [options] <directory>
 Options:
 	-F	Download distfiles and exit
+	-T	Run testsuite
 EOF
     exit 0
 }
@@ -68,14 +69,19 @@ exec 3>&1 1>/dev/null
 
 # defaults
 unset F_opt		# fetch distfiles, don't compile
+unset T_opt		# run testsuite
 
 # parse options
-_opts=$(getopt F "$@")
+_opts=$(getopt FT "$@")
 eval set -- "$_opts"
 while true; do
 	case "$1" in
 		-F)
 			F_opt=1
+			shift
+			;;
+		-T)
+			T_opt=1
 			shift
 			;;
 		--)
@@ -302,12 +308,16 @@ elif [ -r $B/Makefile -o -r $B/makefile ]; then
 fi
 
 # T testsuite
-if [ $run_testsuite ]; then
-    if [ -r $B/Makefile ]; then
-        info "  testsuite ..."
-        cd $B
-        make -k check || true
-    fi
+if [ $T_opt ]; then
+	if [ -r $X/testsuite.sh ]; then
+		info "  testsuite.sh ..."
+		cd $B
+		. $X/testsuite.sh
+	elif [ -r $B/Makefile ]; then
+        	info "  make check ..."
+        	cd $B
+        	make -k check || true
+    	fi
 fi
 
 # D destdir
