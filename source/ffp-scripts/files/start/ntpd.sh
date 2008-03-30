@@ -19,6 +19,9 @@ ntpd_start()
 		echo "ntp 123/udp" >>/etc/services
 	fi
 
+	# remove rtc and daylight cron jobs
+	crontab -l | grep -vw '/usr/sbin/daylight' | grep -vw '/usr/sbin/rtc' | crontab -
+
 	proc_start $command            
 }
 
