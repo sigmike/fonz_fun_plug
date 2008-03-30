@@ -1,0 +1,1 @@
+make CC=gcc DAEMON_UID=0 DAEMON_GID=0

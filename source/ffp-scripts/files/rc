@@ -1,0 +1,14 @@
+#!/ffp/bin/sh
+
+export PATH=/ffp/sbin:/ffp/bin:/usr/sbin:/sbin:/usr/bin:/bin
+
+files=$(rcorder /ffp/start/*.sh)
+for f in $files; do
+    if [ -x "$f" ]; then
+        echo "* $f ..."
+        $f start
+    else
+        echo "* $f inactive"
+    fi
+done
+

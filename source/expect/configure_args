@@ -1,0 +1,3 @@
+--with-tcl=$CPREFIX/lib
+--with-tclinclude=$CPREFIX/include
+

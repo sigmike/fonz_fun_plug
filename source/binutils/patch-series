@@ -1,0 +1,4 @@
+buildroot/100-makeinfo-version.patch
+buildroot/110-arm-eabi-conf.patch
+buildroot/300-001_ld_makefile_patch.patch
+buildroot/300-012_check_ldrunpath_length.patch

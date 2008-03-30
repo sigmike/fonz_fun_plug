@@ -1,0 +1,11 @@
+--- screen-4.0.3/os.h.orig	2008-02-26 14:18:52.000000000 +0100
++++ screen-4.0.3/os.h	2008-02-26 14:20:14.000000000 +0100
+@@ -128,7 +128,7 @@
+ # define ftruncate(fd, s) chsize(fd, s)
+ #endif
+ 
+-#ifdef SYSV
++#if defined(SYSV) || defined(__UCLIBC__) 
+ # define index strchr
+ # define rindex strrchr
+ # define bzero(poi,len) memset(poi,0,len)

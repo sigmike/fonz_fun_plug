@@ -1,0 +1,7 @@
+--enable-languages=c,c++ --enable-__cxa_atexit
+--with-local-prefix=$CPREFIX
+--disable-multilib
+--disable-libssp --disable-libgomp --disable-libmudflap
+--disable-tls
+--with-float=soft
+--disable-bootstrap

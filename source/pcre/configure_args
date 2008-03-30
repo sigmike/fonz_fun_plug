@@ -1,0 +1,4 @@
+--program-prefix="" --program-suffix=""
+--enable-shared=yes --enable-static=yes
+--enable-utf8
+

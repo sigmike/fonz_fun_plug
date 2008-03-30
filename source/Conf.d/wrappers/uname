@@ -1,0 +1,10 @@
+#!/bin/sh
+
+ARCH=arm
+REAL_ARCH=$(/ffp/bin/uname -m)
+
+
+/ffp/bin/uname "$@" | \
+	sed "s@$REAL_ARCH@$ARCH@g"
+
+

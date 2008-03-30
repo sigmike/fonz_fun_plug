@@ -1,0 +1,21 @@
+--with-config-file-path=$CPREFIX/etc
+--enable-shared=yes --enable-static=no
+--with-gnu-ld --with-pic
+--enable-fastcgi --enable-force-cgi-redirect
+--enable-spl
+--enable-hash
+--enable-session
+--with-pcre-regex
+--enable-posix
+--enable-sockets
+--enable-sysvsem
+--enable-calendar=shared
+--enable-ctype=shared
+--enable-libxml --enable-simple-xml --with-libxml-dir=$CPREFIX
+--enable-mbstring=shared --enable-mbregex
+--enable-pdo=shared
+--with-sqlite=shared --enable-sqlite-utf8 --with-pdo-sqlite=shared
+--enable-tokenizer=shared
+--with-zlib=shared --with-zlib-dir=$CPREFIX
+--with-openssl=$CPREFIX
+

@@ -1,0 +1,25 @@
+pkgsrc/patch-aa -p0
+pkgsrc/patch-ab -p0
+pkgsrc/patch-ac -p0
+pkgsrc/patch-ae -p0
+pkgsrc/patch-ah -p0
+pkgsrc/patch-am -p0
+pkgsrc/patch-an -p0
+pkgsrc/patch-ap -p0
+pkgsrc/patch-aq -p0
+pkgsrc/patch-ar -p0
+pkgsrc/patch-as -p0
+pkgsrc/patch-ba -p0
+pkgsrc/patch-ca -p0
+pkgsrc/patch-cb -p0
+pkgsrc/patch-ce -p0
+pkgsrc/patch-ch -p0
+pkgsrc/patch-ci -p0
+pkgsrc/patch-cj -p0
+pkgsrc/patch-ck -p0
+pkgsrc/patch-cn -p0
+pkgsrc/patch-da -p0
+pkgsrc/patch-ta -p0
+pkgsrc/patch-zc -p0
+perl-5.8.8-libc-2.patch
+perl-5.8.8-linux-libc_so_0.patch

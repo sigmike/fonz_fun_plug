@@ -1,0 +1,10 @@
+test "$prefix" = NONE && prefix='/ffp'
+test "$mandir" = '${prefix}/man' && mandir='${prefix}/share/man'
+test "$infodir" = '${prefix}/info' && infodir='${prefix}/share/info'
+test -z "$CFLAGS" && CFLAGS="-O2 -pipe"
+test -z "$CXXFLAGS" && CXXFLAGS="${CFLAGS}"
+enable_nls=no
+
+# DNS-323 firmware kernel 2.6.12.6 does not support IPv6
+enable_ipv6=no
+

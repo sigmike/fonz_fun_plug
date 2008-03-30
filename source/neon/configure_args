@@ -1,0 +1,3 @@
+--prefix=$CPREFIX
+--with-ssl
+

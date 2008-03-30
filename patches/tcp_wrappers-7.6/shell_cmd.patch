@@ -1,0 +1,10 @@
+--- tcp_wrappers_7.6/shell_cmd.c~	1994-12-28 17:42:44.000000000 +0100
++++ tcp_wrappers_7.6/shell_cmd.c	2007-04-01 14:45:08.000000000 +0200
+@@ -20,6 +20,7 @@
+ #include <stdio.h>
+ #include <syslog.h>
+ #include <string.h>
++#include <unistd.h>
+ 
+ extern void exit();
+ 

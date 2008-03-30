@@ -1,0 +1,295 @@
+#!/ffp/bin/sh
+#set -x
+
+# configuration variables
+
+#   funplug prefix, no files outside of this path are allowed
+CPREFIX=/ffp
+
+#   destination prefix, files get installed here
+D=/
+
+# we are
+ME=$(basename $0)
+CWD=$(pwd)
+
+# helper functions
+unset warned
+
+die()
+{
+    echo "ERROR: $@"
+    exit 1
+}
+
+warn()
+{
+    echo "WARNING: $@"
+    warned=1
+}
+
+usage()
+{
+    cat <<EOF
+
+Usage: $ME [options] <packages...>
+
+Options:
+ -i     Install packages (default)
+ -I     Reinstall packages
+ -u     Upgrade packages
+ -r     Remove packages
+ 
+EOF
+
+    exit 1
+}
+
+installpkg()
+{
+    # unpack
+    rm -rf $WORK && mkdir -p $WORK && \
+        tar xzf "$PF" -C $WORK || \
+        die "$PF: Failed to unpack package"
+
+    # check for $CPREFIX
+    [ -d "$WORK$CPREFIX" ] || \
+        die "$PF: $CPREFIX not found in package"
+    for d in $(cd $WORK; ls -a); do
+        if test "$d" = "." -o "$d" = ".."; then
+            continue
+        fi
+        if test "/$d" != "$CPREFIX"; then
+            die "$d: Not allowed in package"
+        fi
+    done
+
+    # check for dangerous symlinks
+    cd $WORK$CPREFIX
+    find -type l | while read f; do
+        if [ -d "$T$f" ]; then
+            warn "$PF: Existing directory $T$f will be removed (rf -rf)"
+            die "$PF: Too dangerous"
+        fi
+    done
+
+    echo "Installing package $PF ..."
+    cd $WORK
+    find .$CPREFIX >$PLOG/$P
+    tar cf - -C $WORK .$CPREFIX | tar xf - -C $D
+}
+
+
+xlat_plog()
+{
+    _T=$(dirname "$T")
+    cat "$1" | grep "^.$CPREFIX/" | while read f; do
+        echo "$_T/$f"
+    done
+}
+
+remove_files()
+{
+    cat "$1" | while read f; do
+        if test ! -d "$f" -a ! -h "$f"; then
+            echo "Removing file $f"
+            rm -f "$f"
+        fi
+    done
+}
+
+remove_dirs()
+{
+    cat "$1" | while read f; do
+        if [ -d "$f" ]; then
+            if [ -z "$(ls \"$f\" 2>/dev/null)" ]; then
+                echo "Removing empty directory $f"
+                rmdir "$f"
+            fi
+        fi
+    done
+}
+
+remove_links()
+{
+    cat "$1" | while read f; do
+        if [ -h "$f" ]; then
+    	    echo "Removing link $f"
+            rm -f "$f"
+        fi
+    done
+}
+
+removepkg()
+{
+    echo "Removing package $P"
+
+    # find unshared files
+    rm -rf $WORK && mkdir -p $WORK && \
+        mv $PLOG/$P $WORK/ || \
+        die "$P: Failed to grab file list"
+    cat $WORK/$P | sort | uniq >$WORK/sorted-$P
+    cat $PLOG/*  | sort | uniq >$WORK/keep
+    comm -23 $WORK/sorted-$P $WORK/keep >$WORK/unshared
+
+    xlat_plog    $WORK/unshared >$WORK/list
+
+    remove_files $WORK/list
+    remove_dirs  $WORK/list
+    remove_links $WORK/list
+    remove_dirs  $WORK/list
+}
+
+upgradepkg()
+{
+	installpkg
+	P=$installed
+	removepkg
+}
+
+check_installed()
+{
+    cd $CWD
+    test -f "$1" || die "$1: Package not found"
+
+    PF=$(readlink -f $1)
+    P=$(basename $PF .tgz)
+    PN=$(echo $P | sed 's@-[^-]*-[^-]*$@@')
+
+    # check for installed packages
+    #   same version
+    installed=no
+    if test -f "$PLOG/$P"; then
+        installed=yes
+    else
+        # or different version
+        for f in $(ls $PLOG); do
+            if test "$(echo $f | sed 's@-[^-]*-[^-]*$@@')" = "$PN"; then
+                installed="$f"
+                break
+            fi
+        done
+    fi
+}
+
+find_installed()
+{
+    # find a match
+    installed=no
+    for f in $(ls $PLOG); do
+        if test "$f" = "$1"; then
+            installed="$f"
+            break
+        elif test "$(echo $f | sed 's@-[^-]*$@@')" = "$1"; then
+            installed="$f"
+            break
+        elif test "$(echo $f | sed 's@-[^-]*-[^-]*$@@')" = "$1"; then
+            installed="$f"
+            break
+        fi
+    done
+
+    # set package variables
+    if test "$installed" != "no"; then
+        P=$installed
+        PN=$(echo $P | sed 's@-[^-]*-[^-]*$@@')
+    fi
+}
+
+
+# options come first
+_opts=$(getopt iIurD: "$@") || usage
+eval set -- "$_opts"
+cmd=i
+unset opt_reinstall
+while true; do
+    case "$1" in
+        -i)
+            cmd=i
+            shift
+            ;;
+        -I)
+            opt_reinstall=1
+            shift
+            ;;
+        -u)
+            cmd=u
+            shift
+            ;;
+        -r)
+            cmd=r
+            shift
+            ;;
+        -D)
+            test -d "$2" || die "$2: No such directory"
+            D="$2"
+            echo "Installing to $D"
+            shift 2
+            ;;
+        --)
+            shift
+            break
+            ;;
+        *)
+            die "getopt error"
+            ;;
+    esac
+done
+
+# now that we know $D...
+mkdir -p $D$CPREFIX  # busybox readlink -f
+T=$(readlink -f $D$CPREFIX)
+#   package log stored in
+PLOG=$T/var/packages
+#   and we put temporary files here:
+WORK=$T/tmp/funpkg.$$
+
+# show help if called without package names
+[ $# -eq 0 ] && usage
+
+# preparations
+mkdir -p $T
+mkdir -p $PLOG
+
+# process packages one by one...
+while [ $# -gt 0 ]; do
+    case $cmd in
+        i)
+            check_installed "$1"
+            if test "$installed" = "no"; then
+                installpkg
+            elif test "$installed" = "yes"; then
+                if [ $opt_reinstall ]; then
+                    installpkg
+                else
+                    warn "Skipping package $P (already installed)"
+                fi
+            else
+                warn "Not installing package $P (already installed: $installed)"
+            fi
+            ;;
+        u)
+            check_installed "$1"
+            if test "$installed" = "no"; then
+                warn "Not upgrading package $P (no package named $PN installed)"
+            elif test "$installed" = "yes"; then
+                warn "Skipping package $P (already installed)"
+            else
+                upgradepkg
+            fi
+            ;;
+        r)
+            find_installed "$1"
+            if test "$installed" = "no"; then
+                warn "Skipping package $1 (not installed)"
+            else
+                removepkg
+            fi
+            ;;
+    esac
+    shift 1
+done
+
+# cleanup
+rm -rf $WORK
+

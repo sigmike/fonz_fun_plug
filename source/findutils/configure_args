@@ -1,0 +1,2 @@
+--libexecdir=$CPREFIX/lib/locate
+--localstatedir=$CPREFIX/var/lib/locate

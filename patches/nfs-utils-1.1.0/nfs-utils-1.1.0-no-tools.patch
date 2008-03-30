@@ -1,0 +1,11 @@
+--- nfs-utils-1.1.0/Makefile.in	2007-05-11 05:43:33.000000000 +0200
++++ nfs-utils-1.1.0.new/Makefile.in	2007-08-30 23:07:19.000000000 +0200
+@@ -222,7 +222,7 @@
+ target_alias = @target_alias@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-SUBDIRS = tools support utils linux-nfs
++SUBDIRS = support utils linux-nfs
+ MAINTAINERCLEANFILES = Makefile.in
+ EXTRA_DIST = \
+ 	autogen.sh \

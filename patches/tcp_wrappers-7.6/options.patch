@@ -1,0 +1,10 @@
+--- tcp_wrappers_7.6/options.c~	2007-04-01 14:33:11.000000000 +0200
++++ tcp_wrappers_7.6/options.c	2007-04-01 14:35:52.000000000 +0200
+@@ -47,6 +47,7 @@
+ #include <ctype.h>
+ #include <setjmp.h>
+ #include <string.h>
++#include <unistd.h>
+ 
+ #ifndef MAXPATHNAMELEN
+ #define MAXPATHNAMELEN  BUFSIZ

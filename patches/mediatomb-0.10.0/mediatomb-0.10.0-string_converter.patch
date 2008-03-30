@@ -1,0 +1,21 @@
+--- mediatomb-0.10.0/src/string_converter.cc        2007-07-12 21:13:23.000000000 +0200
++++ mediatomb-0.10.0-leopard/src/string_converter.cc        2007-11-24 19:30:18.000000000 +0100
+@@ -130,13 +130,13 @@ zmm::String StringConverter::_convert(St
+     
+     //log_debug(("iconv: BEFORE: input bytes left: %d  output bytes left: %d\n",
+     //       input_bytes, output_bytes));
+-#if defined(HAVE_LIBICONV) || defined(SOLARIS)
+-    ret = iconv(cd, (const char**)input_ptr, &input_bytes,
+-            output_ptr, &output_bytes);
+-#else
++//#if defined(HAVE_LIBICONV) || defined(SOLARIS)
++//    ret = iconv(cd, (const char**)input_ptr, &input_bytes,
++//            output_ptr, &output_bytes);
++//#else
+     ret = iconv(cd, input_ptr, &input_bytes,
+             output_ptr, &output_bytes);
+-#endif
++//#endif
+ 
+     if (ret == -1)
+     {

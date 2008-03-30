@@ -1,0 +1,9 @@
+--prefix=$CPREFIX
+--enable-shared --disable-static
+--with-apr=$CPREFIX
+--with-apr-util=$CPREFIX
+--with-neon=$CPREFIX
+--with-pic
+--with-ssl
+--with-zlib
+

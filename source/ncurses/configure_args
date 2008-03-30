@@ -1,0 +1,4 @@
+--with-shared
+--without-debug --without-ada
+--enable-overwrite
+

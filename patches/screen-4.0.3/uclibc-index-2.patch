@@ -1,0 +1,17 @@
+--- screen-4.0.3/osdef.h.in.orig	2008-02-26 14:30:52.000000000 +0100
++++ screen-4.0.3/osdef.h.in	2008-02-26 14:33:30.000000000 +0100
+@@ -51,12 +51,14 @@
+ extern char *memset __P((char *, int, int));
+ extern int   memcmp __P((char *, char *, int));
+ #else
++#if !defined(__UCLIBC__)
+ extern char *index __P((char *, int));
+ extern char *rindex __P((char *, int));
+ extern void  bzero __P((char *, int));
+ extern int   bcmp __P((char *, char *, int));
+ extern int   killpg __P((int, int));
+ #endif
++#endif
+ 
+ #ifndef USEBCOPY
+ # ifdef USEMEMCPY

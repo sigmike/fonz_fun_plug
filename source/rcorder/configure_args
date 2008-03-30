@@ -1,0 +1,1 @@
+LIBS=$CPREFIX/lib/libnbcompat.a
