@@ -1,4 +1,10 @@
 +------------------------------------------------------------------------------+
+Sun Mar 30 21:38:57 CEST 2008
+ffp-scripts-0.5-12: Updated.
+	- Updated start/ntpd.sh. It now removes the rtc and daylight cronjobs.
+	- More changes to funpkg.
+bzip2-1.0.5-1: Updated. fixes CVE-2008-1372.
++------------------------------------------------------------------------------+
 Wed Mar 26 18:04:20 CET 2008
 apr-1.2.12-1: Added.
 apr-util-1.2.12-1: Added.
