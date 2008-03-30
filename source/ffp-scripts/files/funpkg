@@ -1,108 +1,102 @@
-#!/ffp/bin/sh
+#!/bin/bash
 #set -x
 
-# configuration variables
-
-#   funplug prefix, no files outside of this path are allowed
-CPREFIX=/ffp
-
-#   destination prefix, files get installed here
-D=/
-
-# we are
 ME=$(basename $0)
-CWD=$(pwd)
-
-# helper functions
-unset warned
-
-die()
-{
-    echo "ERROR: $@"
-    exit 1
-}
-
-warn()
-{
-    echo "WARNING: $@"
-    warned=1
-}
 
 usage()
 {
     cat <<EOF
+funpkg $FUNPKG_VERSION
+Copyright (c) 2008 Tobias Poschwatta <tp@fonz.de>
 
-Usage: $ME [options] <packages...>
+Install:   $ME -i <packages...>
+Reinstall: $ME -I <packages...>
+Upgrade:   $ME -u <packages...>
+Remove:    $ME -r <packages...> 
 
-Options:
- -i     Install packages (default)
- -I     Reinstall packages
- -u     Upgrade packages
- -r     Remove packages
- 
+Other options:
+  -D <path>  System root directory (default: /)
+
 EOF
+    exit 2
+}
 
+die()
+{
+    cat <<EOF
+FATAL: $@
+EOF
     exit 1
 }
 
+info()
+{
+    cat <<EOF
+$@
+EOF
+}
+
+
+# low-level functions
+
+#  installpkg <pkg-file>
 installpkg()
 {
-    # unpack
-    rm -rf $WORK && mkdir -p $WORK && \
-        tar xzf "$PF" -C $WORK || \
-        die "$PF: Failed to unpack package"
+    # checks
+    test $# -eq 1 || die "Internal Error: installpkg <pkg-file>"
+    test -e "$1"  || die "$1: File not found"
 
-    # check for $CPREFIX
-    [ -d "$WORK$CPREFIX" ] || \
-        die "$PF: $CPREFIX not found in package"
-    for d in $(cd $WORK; ls -a); do
-        if test "$d" = "." -o "$d" = ".."; then
-            continue
-        fi
-        if test "/$d" != "$CPREFIX"; then
-            die "$d: Not allowed in package"
-        fi
-    done
+    # unpack
+    #info "Unpacking $1 ..."
+    rm -rf $work && mkdir -p $work && \
+        tar xzf "$1" -C $work || \
+        die "$1: Failed to unpack package"
+
+	# check for $prefix
+	cd $work
+	test -d .$prefix || die "$1: $prefix not found in package"
 
     # check for dangerous symlinks
-    cd $WORK$CPREFIX
-    find -type l | while read f; do
-        if [ -d "$T$f" ]; then
-            warn "$PF: Existing directory $T$f will be removed (rf -rf)"
-            die "$PF: Too dangerous"
+    cd $work
+    find . -type l | while read f; do
+        if test -d $sysroot/$f; then
+            die "$1: Symlink $f in package must not overwrite existing directory $sysroot/$f"
         fi
     done
 
-    echo "Installing package $PF ..."
-    cd $WORK
-    find .$CPREFIX >$PLOG/$P
-    tar cf - -C $WORK .$CPREFIX | tar xf - -C $D
+    # install
+    PF=$(basename "$1" .tgz)
+    info "Installing package $PF ..."
+
+    # create pkgdb entry
+    cd $work
+    find .$prefix | grep -v "^\.$prefix\$" >$pkgdb/$PF
+
+	# install
+	mkdir -p $sysroot$prefix
+	tar cf - -C $work$prefix . | tar xf - -C $sysroot$prefix
+    
+    # dns323: ensure 0777 on /
+    chmod 0777 $sysroot/
 }
 
-
-xlat_plog()
-{
-    _T=$(dirname "$T")
-    cat "$1" | grep "^.$CPREFIX/" | while read f; do
-        echo "$_T/$f"
-    done
-}
-
+#  remove_files <file-list>
 remove_files()
 {
     cat "$1" | while read f; do
-        if test ! -d "$f" -a ! -h "$f"; then
+        if test -e "$f" -a ! -d "$f" -a ! -h "$f"; then
             echo "Removing file $f"
             rm -f "$f"
         fi
     done
 }
 
+#  remove_dirs <file-list>
 remove_dirs()
 {
     cat "$1" | while read f; do
-        if [ -d "$f" ]; then
-            if [ -z "$(ls \"$f\" 2>/dev/null)" ]; then
+        if test -d "$f"; then
+            if test "$(ls -a $f 2>/dev/null | wc -l)" -le 2; then
                 echo "Removing empty directory $f"
                 rmdir "$f"
             fi
@@ -110,61 +104,81 @@ remove_dirs()
     done
 }
 
+#  remove_links <file-list>
 remove_links()
 {
     cat "$1" | while read f; do
         if [ -h "$f" ]; then
-    	    echo "Removing link $f"
+            echo "Removing link $f"
             rm -f "$f"
         fi
     done
 }
 
+#  removepkg <pkg-name>
 removepkg()
 {
-    echo "Removing package $P"
+    # checks
+    test $# -eq 1       || die "Internal Error: removepkg <pkg-name>"
+    test -e "$pkgdb/$1" || die "$1: No such package"
 
-    # find unshared files
-    rm -rf $WORK && mkdir -p $WORK && \
-        mv $PLOG/$P $WORK/ || \
-        die "$P: Failed to grab file list"
-    cat $WORK/$P | sort | uniq >$WORK/sorted-$P
-    cat $PLOG/*  | sort | uniq >$WORK/keep
-    comm -23 $WORK/sorted-$P $WORK/keep >$WORK/unshared
+    info "Removing package $1 ..."
 
-    xlat_plog    $WORK/unshared >$WORK/list
+    # file lists
+    rm -rf $work && mkdir -p $work
+    mv $pkgdb/$1 $work
+    cat $work/$1 2>/dev/null | sort | uniq >$work/pkg
+    cat $pkgdb/* 2>/dev/null | sort | uniq >$work/keep
+    mv $work/$1 $pkgdb
+    comm -23 $work/pkg $work/keep | sort -r | \
+        sed -e '/^\.$/d' -e "s@^@/${sysroot}/@" -e 's@//@/@g' -e 's@/\./@/@g' \
+        >$work/remove
 
-    remove_files $WORK/list
-    remove_dirs  $WORK/list
-    remove_links $WORK/list
-    remove_dirs  $WORK/list
+    # remove files, dirs and links
+    remove_files $work/remove
+    remove_dirs  $work/remove
+    remove_links $work/remove
+    remove_dirs  $work/remove
+
+    # remove pkgdb entry
+    rm -f $pkgdb/$1
 }
 
+#  upgradepkg <old-pkg-name> <new-pkg-file>
 upgradepkg()
 {
-	installpkg
-	P=$installed
-	removepkg
+    # checks
+    test $# -eq 2       || die "Internal Error: upgradepkg <old-pkg-name> <new-pkg-file>"
+    test -e "$pkgdb/$1" || die "$1: No such package"
+    test -e "$2"        || die "$1: File not found"
+    
+    # install new package
+    installpkg "$2"
+    # remove old package
+    removepkg "$1"
 }
 
+
+# check pkgdb
+
+#  check_installed <pkg-file>
 check_installed()
 {
-    cd $CWD
-    test -f "$1" || die "$1: Package not found"
+    # checks
+    test $# -eq 1 || die "Internal Error: check_installed <pkg-file>"
+    test -e "$1"  || die "$1: File not found"
 
-    PF=$(readlink -f $1)
-    P=$(basename $PF .tgz)
-    PN=$(echo $P | sed 's@-[^-]*-[^-]*$@@')
-
-    # check for installed packages
-    #   same version
     installed=no
-    if test -f "$PLOG/$P"; then
+    
+    # check name-version-revision
+    p=$(basename "$1" .tgz)
+    if test -e $pkgdb/$p; then
         installed=yes
     else
-        # or different version
-        for f in $(ls $PLOG); do
-            if test "$(echo $f | sed 's@-[^-]*-[^-]*$@@')" = "$PN"; then
+        # check name only
+        pn=$(echo $p | sed 's@-[^-]*-[^-]*$@@')
+        for f in $(cd $pkgdb; ls); do
+            if test "$(echo $f | sed 's@-[^-]*-[^-]*$@@')" = "$pn"; then
                 installed="$f"
                 break
             fi
@@ -172,44 +186,55 @@ check_installed()
     fi
 }
 
+#  find_installed <pkg-name>
 find_installed()
 {
-    # find a match
-    installed=no
-    for f in $(ls $PLOG); do
-        if test "$f" = "$1"; then
-            installed="$f"
-            break
-        elif test "$(echo $f | sed 's@-[^-]*$@@')" = "$1"; then
-            installed="$f"
-            break
-        elif test "$(echo $f | sed 's@-[^-]*-[^-]*$@@')" = "$1"; then
-            installed="$f"
-            break
-        fi
-    done
+    # checks
+    test $# -eq 1 || die "Internal Error: find_installed <pkg-name>"
 
-    # set package variables
-    if test "$installed" != "no"; then
-        P=$installed
-        PN=$(echo $P | sed 's@-[^-]*-[^-]*$@@')
+    installed=no
+
+    # check name-version-revision, name-version and name
+    if test -e "$pkgdb/$1"; then
+        installed="$1"
+    elif test -e "$pkgdb/$(basename $1 .tgz)"; then
+        installed="$(basename $1 .tgz)"
+    else
+        for f in $(cd $pkgdb; ls); do
+            if test "$f" = "$1"; then
+                installed="$f"
+                break
+            elif test "$(echo $f | sed 's@-[^-]*$@@')" = "$1"; then
+                installed="$f"
+                break
+            elif test "$(echo $f | sed 's@-[^-]*-[^-]*$@@')" = "$1"; then
+                installed="$f"
+                break
+            fi
+        done
     fi
 }
 
 
-# options come first
-_opts=$(getopt iIurD: "$@") || usage
+
+# parse options
+test $# -gt 0 || usage
+_opts=$(getopt hiIurD: "$@") || usage
 eval set -- "$_opts"
-cmd=i
-unset opt_reinstall
+cmd=h
+prefix=/ffp
+sysroot=$(dirname $(readlink -f $prefix)/)
 while true; do
     case "$1" in
+	-h)
+		usage
+		;;
         -i)
             cmd=i
             shift
             ;;
         -I)
-            opt_reinstall=1
+            cmd=I
             shift
             ;;
         -u)
@@ -221,9 +246,7 @@ while true; do
             shift
             ;;
         -D)
-            test -d "$2" || die "$2: No such directory"
-            D="$2"
-            echo "Installing to $D"
+            sysroot="$2"
             shift 2
             ;;
         --)
@@ -235,61 +258,67 @@ while true; do
             ;;
     esac
 done
+test $cmd = "h" && usage
 
-# now that we know $D...
-mkdir -p $D$CPREFIX  # busybox readlink -f
-T=$(readlink -f $D$CPREFIX)
-#   package log stored in
-PLOG=$T/var/packages
-#   and we put temporary files here:
-WORK=$T/tmp/funpkg.$$
+CWD=$(pwd)
+pkgdb="$sysroot$prefix/var/packages"
+mkdir -p $pkgdb
 
-# show help if called without package names
-[ $# -eq 0 ] && usage
+# setup work directory
+work=$sysroot$prefix/tmp/funpkg.$$
+rm -rf $work
 
-# preparations
-mkdir -p $T
-mkdir -p $PLOG
-
-# process packages one by one...
+# process packages
 while [ $# -gt 0 ]; do
+    cd $CWD
     case $cmd in
+
         i)
             check_installed "$1"
             if test "$installed" = "no"; then
-                installpkg
+                installpkg "$1"
             elif test "$installed" = "yes"; then
-                if [ $opt_reinstall ]; then
-                    installpkg
-                else
-                    warn "Skipping package $P (already installed)"
-                fi
+                info "Skipping $1 (already installed)"
             else
-                warn "Not installing package $P (already installed: $installed)"
+                info "Skipping $1 (installed: $installed)"
             fi
             ;;
+
+        I)
+            check_installed "$1"
+            if test "$installed" = "no"; then
+                installpkg "$1"
+            elif test "$installed" = "yes"; then
+                installpkg "$1"
+            else
+                info "Skipping $1 (installed: $installed)"
+            fi
+            ;;
+
         u)
             check_installed "$1"
             if test "$installed" = "no"; then
-                warn "Not upgrading package $P (no package named $PN installed)"
+                info "Skipping $1 (not installed)"
             elif test "$installed" = "yes"; then
-                warn "Skipping package $P (already installed)"
+                info "Skipping $1 (already installed)"
             else
-                upgradepkg
+                upgradepkg "$installed" "$1"
             fi
             ;;
+
         r)
             find_installed "$1"
             if test "$installed" = "no"; then
-                warn "Skipping package $1 (not installed)"
+                info "Skipping $1 (not installed)"
             else
-                removepkg
+                removepkg "$installed"
             fi
             ;;
+
     esac
-    shift 1
+    shift
 done
 
-# cleanup
-rm -rf $WORK
+# cleanup            
+rm -rf $work
 
