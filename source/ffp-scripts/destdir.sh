@@ -15,3 +15,5 @@
         mkdir -p sbin
         install -m 0755 $FILESDIR/funpkg sbin/
 
+	chown -R root:root *
+

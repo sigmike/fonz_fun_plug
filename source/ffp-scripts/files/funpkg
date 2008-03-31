@@ -59,10 +59,10 @@ installpkg()
     # check for dangerous symlinks
     cd $work
     find . -type l | while read f; do
-        if test -d $sysroot/$f; then
+        if test -d $sysroot/$f -a ! -h $sysroot/$f; then
             die "$1: Symlink $f in package must not overwrite existing directory $sysroot/$f"
         fi
-    done
+    done || exit 1
 
     # install
     PF=$(basename "$1" .tgz)
