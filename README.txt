@@ -35,7 +35,7 @@ Getting started:
     cd /mnt/HD_a2
     rsync -av inreto.de::dns323/fun-plug/0.5-experimental/packages .
     cd packages
-    funpkg *.tgz
+    funpkg -i *.tgz
 
   For more information, please visit the the DNS-323 wiki and forums at
     http://wiki.dns323.info/howto:ffp
