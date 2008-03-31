@@ -7,7 +7,7 @@ config_disable() {
 
 
     # Set paths
-    cat $CONFIGDIR/$P.config >.config
+    cat $CONFDIR/$P.config >.config
     sed -i \
         -e "/^KERNEL_HEADERS/s:=.*:=\"$CPREFIX/include\":" \
         -e "/^SHARED_LIB_LOADER_PREFIX/s:=.*:=\"$CPREFIX/lib\":" \
