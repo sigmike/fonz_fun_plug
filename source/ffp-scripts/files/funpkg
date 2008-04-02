@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/ffp/bin/sh
 #set -x
 
 ME=$(basename $0)
