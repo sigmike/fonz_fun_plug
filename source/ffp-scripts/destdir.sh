@@ -17,3 +17,6 @@
 
 	chown -R root:root *
 
+	# clean up unwanted stuff
+	find -name .svn -type d | xargs rm -rf
+
