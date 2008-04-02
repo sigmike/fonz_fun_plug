@@ -22,8 +22,14 @@ bb_remove() {
         bb_set     "CONFIG_PREFIX" "$D$CPREFIX"
         bb_enable  "CONFIG_INSTALL_NO_USR"
 
-        # don't install links now
-        # we have busybox --install -s for that
+	# don't include the installer, we use
+	# our own script to create the links
+	bb_disable "CONFIG_FEATURE_INSTALLER"
+
+	# no, i really don't want that linuxrc thing
+	bb_disable "CONFIG_FEATURE_INITRD"
+
+	# install symlinks
         bb_enable  "CONFIG_INSTALL_APPLET_SYMLINKS"
         bb_disable "CONFIG_INSTALL_APPLET_HARDLINKS"
         bb_disable "CONFIG_INSTALL_APPLET_SCRIPT_WRAPPERS"
