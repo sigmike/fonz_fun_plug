@@ -19,7 +19,7 @@ FFP_TMP=/mnt/HD_a2/ffp.tar.tmp.d
 # rc file path
 FFP_RC=$FFP_PREFIX/etc/rc
 
-echo "**** fun_plug script for DNS-323 (2008-03-25 tp@fonz.de) ****"
+echo "**** fun_plug script for DNS-323 (2008-03-31 tp@fonz.de) ****"
 date
 
 # first, create FFP_PREFIX link
@@ -34,10 +34,6 @@ if [ -r $FFP_TARBALL ]; then
         echo "* OK"
     fi
     rm $FFP_TARBALL
-    if [ -x $FFP_PREFIX/bin/busybox ]; then
-        echo "* Running $FFP_PREFIX/bin/busybox --install -s ..."
-        $FFP_PREFIX/bin/busybox --install -s
-    fi
 fi
 
 # suid busybox

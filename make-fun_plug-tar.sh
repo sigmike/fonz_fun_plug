@@ -78,6 +78,9 @@ for f in $pkg_files; do
     tar xf $f -C $D
 done
 
+# install busybox links
+( cd $D; /bin/sh ./ffp/bin/install-busybox-links.sh )
+
 # install libraries
 for f in $lib_pkg_files; do
     echo "  Installing libraries from $(basename $f) ..."

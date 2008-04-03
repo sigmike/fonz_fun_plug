@@ -1,4 +1,21 @@
 +------------------------------------------------------------------------------+
+Wed Apr  2 23:35:15 CEST 2008
+kernel-headers-2.6.9.1-2: Updated. Fix file ownership in package.
++------------------------------------------------------------------------------+
+Wed Apr  2 23:20:28 CEST 2008
+mediatomb-0.11.0-3: Upgraded.
+busybox-1.10.0-2: Updated. The package still contains no links, but I've added
+	a script (/ffp/bin/install-busybox-links.sh) that can recreate all
+	(missing) links (using relative paths, unlike busybox --install). Also
+	added the new tcpudp patch from:
+	http://busybox.net/downloads/fixes-1.10.0/
+ffp-scripts-0.5-14: Updated. Use #!/ffp/bin/sh in funpkg script.
+fun_plug, fun_plug.tgz: Regenerated from newest packages. Busybox links are
+	included again. I also have removed the installer function from the
+	new busybox package and the call to busybox --install from the fun_plug
+	script. It created absolute links (while links created at
+	package-time are relative and easier to move around).
++------------------------------------------------------------------------------+
 Mon Mar 31 21:21:53 CEST 2008
 ncurses-5.6-3: Updated. Make /ffp/bin/ncureses-config executable.
 ffp-scripts-0.5-13: Updated.
