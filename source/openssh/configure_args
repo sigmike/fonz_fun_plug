@@ -1,0 +1,4 @@
+--sysconfdir=$CPREFIX/etc/ssh
+--with-md5-passwords
+--with-privsep-path=$CPREFIX/var/lib/sshd
+--prefix=$CPREFIX
