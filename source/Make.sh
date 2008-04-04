@@ -330,6 +330,14 @@ elif [ -r $B/Makefile -o -r $B/makefile ]; then
 	cd $B
 	make DESTDIR=$D install
 fi
+# run additional destdir scripts
+for _f in $(find $CONFDIR -name destdir-\*.sh); do
+	if [ -x "$_f" ]; then
+		info "  $(basename $_f)"
+		cd $D
+		. $_f
+	fi
+done
 # run scripts from config/destdir-checks/
 for _f in $CONFDIR/destdir-checks/*.sh; do
     if [ -x "$_f" ]; then
