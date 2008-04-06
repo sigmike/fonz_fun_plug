@@ -1,4 +1,18 @@
 +------------------------------------------------------------------------------+
+Sun Apr  6 22:37:15 CEST 2008
+shadow-4.0.18.2-1: Added. busybox lacks functions to change login shells
+	(chsh) or home directories (usermod) of users. pwconv might prove
+	useful, too.
+busybox-1.10.0-3: Updated. Minor patch to make it read /ffp/etc/busybox.conf
+	(instead of just /etc/busybox.conf) for suid config.
++------------------------------------------------------------------------------+
+Fri Apr  4 14:46:30 CEST 2008
+openssh-5.0p1-1: Added. Full openssh package. Replaces dropbear and
+	openssh-sftp packages. Use "funpkg -r openssh-sftp dropbear" to remove
+	the old packages before installing this one.
+openssh-sftp-4.7p1-2: Removed.
+dropbear-0.50-2: Removed.
++------------------------------------------------------------------------------+
 Wed Apr  2 23:35:15 CEST 2008
 kernel-headers-2.6.9.1-2: Updated. Fix file ownership in package.
 +------------------------------------------------------------------------------+
