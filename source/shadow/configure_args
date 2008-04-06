@@ -1,0 +1,3 @@
+--sysconfdir=$CSYSCONFDIR
+--enable-shared
+with_audit=no with_libpam=no with_selinux=no

@@ -1,0 +1,2 @@
+gentoo-patches/shadow-4.0.13-nonis.patch -p0
+gentoo-patches/shadow-4.0.15-uclibc-missing-l64a.patch

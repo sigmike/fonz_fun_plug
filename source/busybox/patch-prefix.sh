@@ -38,3 +38,8 @@
                 -e "/define BB_ADDITIONAL_PATH/ s@\"\"@\":$CPREFIX/bin:$CPREFIX/sbin\"@" \
                 libbb/messages.c
 
+# /etc/busybox.conf
+# libbb/appletlib.c:static const char config_file[] ALIGN1 = "/etc/busybox.conf";
+sed -i "/const char config_file/ s@/etc@$CSYSCONFDIR@" libbb/appletlib.c
+
+
