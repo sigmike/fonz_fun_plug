@@ -1,7 +1,7 @@
 #!/ffp/bin/sh
 
-# PROVIDES: telnetd
-# REQUIRES: LOGIN
+# PROVIDE: telnetd
+# REQUIRE: LOGIN
 
 . /ffp/etc/ffp.subr
 

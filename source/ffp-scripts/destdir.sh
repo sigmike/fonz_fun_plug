@@ -2,7 +2,7 @@
         cd $D$CPREFIX
 
         mkdir -p etc
-        cp -ar $FILESDIR/examples etc/
+        #cp -ar $FILESDIR/examples etc/
         install -m 0644 $FILESDIR/ffp.subr etc/
         install -m 0755 $FILESDIR/rc etc/
 
