@@ -1,4 +1,42 @@
 +------------------------------------------------------------------------------+
+Sun Apr 13 14:12:18 CEST 2008
+fun_plug: Updated. Removed unused FFP_TMP variable.
+fun_plug.tgz: Rebuilt from latest packages, added lots of stuff. 
+	The tarball now includes these packages:
+	 busybox, dialog, dns323-utils, ffp-scripts, groff,
+	 less, lighttpd, man, mediatomb, nfs-utils, ntp,
+	 openssh, portmap, rcorder, rsync, shadow, strace, unfs3
+	along with essential programs and libraries from:
+	 uclibc, e2fsprogs, file, libiconv, ncurses,
+	 expat, gcc, libxml2, openssl, pcre, readline, tcp_wrappers, zlib
+gdb-6.6-1: Added.
+convmv-1.12-2: Updated. Fix interpreter in convmv script.
+php-5.2.5-3: Updated. Recompiled with --enable-pcntl and --enable-sigchild.
+	Requested by nomego.
+ffp-scripts-0.5-15: Updated. Moved a few start scripts. Renamed sysinit.sh to
+ 	rcS.sh; added passwd.sh, shells.sh and pwconv.sh
+ntp-4.2.4p4-3: Updated. Moved start/ntpd.sh script and ntp.conf example config.
+unfs3-0.9.20-3: Updated. Moved start/unfsd.sh script.
+portmap-6.0-3: Updated. Moved start/portmap.sh script.
+nfs-utils-1.1.0-3: Updated. Moved start script.
+fbtpd-0.13-3: Updated. Moved start/btpd.sh script.
+mediatomb-0.11.0-4: Updated. Moved start/mediatomb.sh script.
+rsync-3.0.2-1: Upgraded. Moved start/rsyncd.sh script. Fixes a potential
+	buffer-overflow. (* Security Fix *)
+busybox-1.10.0-4: Updated. Moved inetd, and syslogd start scripts.
+	Now really includes the install-busybox-links.sh script. Removed
+	linux32/64 programs (useless on the DNS).
+lighttpd-1.4.19-3: Updated. Fix minor issue in start script. Added kickwebs.sh
+	start script. You can use it to kill webs before lighttpd is started.
+	That way, lighttpd can run on port 80, while webs restarts
+	automatically on port 81:
+	http://forum.dsmg600.info/t246-Change-http-port.html
++------------------------------------------------------------------------------+
+Tue Apr  8 22:06:13 CEST 2008
+lighttpd-1.4.19-2: Updated. Moved start script and example config files here.
+	Also (re-)added /ffp/etc/examples/lighttpd.conf-with-php example.
+convmv-1.12-1: Added. Requested by rori. Needs perl.
++------------------------------------------------------------------------------+
 Sun Apr  6 22:37:15 CEST 2008
 shadow-4.0.18.2-1: Added. busybox lacks functions to change login shells
 	(chsh) or home directories (usermod) of users. pwconv might prove
