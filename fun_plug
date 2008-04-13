@@ -13,13 +13,10 @@ FFP_PREFIX=/ffp
 # where to search for the install tarball
 FFP_TARBALL=/mnt/HD_a2/fun_plug.tgz
 
-# temporary directory used during installation
-FFP_TMP=/mnt/HD_a2/ffp.tar.tmp.d
-
 # rc file path
 FFP_RC=$FFP_PREFIX/etc/rc
 
-echo "**** fun_plug script for DNS-323 (2008-03-31 tp@fonz.de) ****"
+echo "**** fun_plug script for DNS-323 (2008-04-13 tp@fonz.de) ****"
 date
 
 # first, create FFP_PREFIX link
