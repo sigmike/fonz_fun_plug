@@ -2,7 +2,7 @@
 
 # PROVIDE: syslogd klogd
 # BEFORE: SERVERS
-# REQUIRE: sysinit
+# REQUIRE: rcS
 
 . /ffp/etc/ffp.subr
 

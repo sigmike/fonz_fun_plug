@@ -29,6 +29,9 @@ bb_remove() {
 	# no, i really don't want that linuxrc thing
 	bb_disable "CONFIG_FEATURE_INITRD"
 
+	# linux32/64 is also useless on the dns
+	bb_disable "CONFIG_SETARCH"
+
 	# install symlinks
         bb_enable  "CONFIG_INSTALL_APPLET_SYMLINKS"
         bb_disable "CONFIG_INSTALL_APPLET_HARDLINKS"
