@@ -331,17 +331,17 @@ elif [ -r $B/Makefile -o -r $B/makefile ]; then
 	make DESTDIR=$D install
 fi
 # run additional destdir scripts
-for _f in $(find $X -name destdir-\*.sh); do
-	info "  $(basename $_f) ..."
-	cd $B
-	. $_f
-done
 for _f in $(find $CONFDIR -name destdir-\*.sh); do
 	if [ -x "$_f" ]; then
 		info "  $(basename $_f)"
 		cd $D
 		. $_f
 	fi
+done
+for _f in $(find $X -name destdir-\*.sh); do
+	info "  $(basename $_f) ..."
+	cd $B
+	. $_f
 done
 # run scripts from config/destdir-checks/
 for _f in $CONFDIR/destdir-checks/*.sh; do
