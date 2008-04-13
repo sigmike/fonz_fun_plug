@@ -1,13 +1,15 @@
 #!/ffp/bin/sh
 
-# PROVIDE: sysinit
+# PROVIDE: rcS
+# BEFORE: SERVERS
 
 . /ffp/etc/ffp.subr
 
-name="sysinit"
-start_cmd="sysinit_start"
+name="rcS"
+start_cmd="rcS_start"
+stop_cmd=:
 
-sysinit_start()
+rcS_start()
 {
     # fixup firmware issues
 

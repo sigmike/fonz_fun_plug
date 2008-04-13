@@ -2,6 +2,7 @@
 
 # PROVIDE: adjtimex
 # BEFORE: SERVERS
+# REQUIRE: rcS
 
 . /ffp/etc/ffp.subr
 
