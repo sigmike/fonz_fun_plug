@@ -293,7 +293,7 @@ if [ -r $X/configure.sh ]; then
 elif [ -x $S/configure ]; then
 	info "  configure ..."
 	cd $B
-	$S/configure $configure_args
+	eval $S/configure $configure_args
 fi
 
 # M make
