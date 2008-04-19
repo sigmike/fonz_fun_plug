@@ -4,3 +4,7 @@
         -e '/ln .*PREFIX/s,$(PREFIX)/bin/,,' \
         Makefile
 
+# use LDFLAGS from environment
+sed -i 's@^LDFLAGS=.*@#&@' Makefile
+sed -i 's@ -o@ $(LDFLAGS)&@' Makefile-libbz2_so 
+
