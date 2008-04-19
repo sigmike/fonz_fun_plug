@@ -1,1 +1,1 @@
-make SHLIB_XLDFLAGS=-lncurses
+make SHLIB_XLDFLAGS="-lncurses $LDFLAGS"

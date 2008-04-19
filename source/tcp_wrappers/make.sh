@@ -1,6 +1,10 @@
-    make CC=gcc \
+
+sed -i "/^SHLIBFLAGS =/ s@\$@ ${LDFLAGS}@" Makefile
+
+make CC=gcc \
         REAL_DAEMON_DIR=$CPREFIX/sbin STYLE=-DPROCESS_OPTIONS \
         LIBS=-lnsl RANLIB=$RANLIB ARFLAGS=rv AUX_OBJ=weak_symbols.o \
         NETGROUP= TLI= VSYSLOG= BUGS= all \
-        EXTRA_CFLAGS="-DHAVE_STRERROR -DHAVE_WEAKSYMS -D_REENTRANT"
+        EXTRA_CFLAGS="-DHAVE_STRERROR -DHAVE_WEAKSYMS -D_REENTRANT" \
+	LIBS="${LDFLAGS}"
 
