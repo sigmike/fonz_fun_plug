@@ -65,11 +65,13 @@ which $TAR >/dev/null 2>/dev/null || die "$TAR not found"
 
 
 # Cleanup
+echo "clean..."
 rm -rf $WORKDIR
 mkdir -p $WORKDIR $D
 
 
 # busybox and links
+echo "busybox..."
 cd $D
 tar xzf $(find_pkg busybox)
 /bin/sh .$CPREFIX/bin/install-busybox-links.sh
@@ -83,6 +85,7 @@ plist=(
     file
     libiconv
     ncurses
+    sqlite
 )
 
 for p in ${plist[*]}; do
