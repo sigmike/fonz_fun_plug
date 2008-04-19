@@ -6,24 +6,25 @@ config_disable() {
 }
 
 
-    # Set paths
-    cat $CONFDIR/$P.config >.config
-    sed -i \
-        -e "/^KERNEL_HEADERS/s:=.*:=\"$CPREFIX/include\":" \
-        -e "/^SHARED_LIB_LOADER_PREFIX/s:=.*:=\"$CPREFIX/lib\":" \
-        -e "/^RUNTIME_PREFIX/s:=.*:=\"$CPREFIX\":" \
-        -e "/^DEVEL_PREFIX/s:=.*:=\"$CPREFIX\":" \
-        -e "/^CROSS_COMPILER_PREFIX/s:=.*:=\"\":" \
-        .config
+# Set paths
+cat $CONFDIR/$P.config >.config
+sed -i \
+    -e "/^KERNEL_HEADERS/s:=.*:=\"$CPREFIX/include\":" \
+    -e "/^SHARED_LIB_LOADER_PREFIX/s:=.*:=\"$CPREFIX/lib\":" \
+    -e "/^RUNTIME_PREFIX/s:=.*:=\"$CPREFIX\":" \
+    -e "/^DEVEL_PREFIX/s:=.*:=\"$CPREFIX\":" \
+    -e "/^CROSS_COMPILER_PREFIX/s:=.*:=\"\":" \
+    .config
 
 
-    #   Target ABI
-    config_disable      "CONFIG_ARM_EABI"
-    config_enable       "CONFIG_ARM_OABI"
+#   Target ABI
+config_disable      "CONFIG_ARM_EABI"
+config_enable       "CONFIG_ARM_OABI"
 
-    #   Soft-Float
-    config_disable      "UCLIBC_HAS_FPU"
-    config_enable       "UCLIBC_HAS_SOFT_FLOAT"
+#   Soft-Float
+config_disable      "UCLIBC_HAS_FPU"
+config_enable       "UCLIBC_HAS_SOFT_FLOAT"
 
-    make oldconfig
+yes '' | make oldconfig
+
 

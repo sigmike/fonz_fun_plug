@@ -1,3 +1,3 @@
-make
-make utils
+make V=1 UCLIBC_EXTRA_LDFLAGS="$LDFLAGS"
+make V=1 UCLIBC_EXTRA_LDFLAGS="$LDFLAGS" utils
 
