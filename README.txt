@@ -1,13 +1,11 @@
-*** WARNING *** WARNING *** WARNING *** WARNING *** WARNING ***
+ WARNING: This funplug is still beta!
 
- This funplug is experimental. If unsure, use 0.3 or 0.4.
-
- You cannot use these packages with earlier funplug versions!
+ WARNING: You cannot use these packages with earlier funplug versions!
 
  The install image is now fun_plug.tgz (was fun_plug.tar). 
 
  The uncompressed fun_plug.tgz requires approx. 7MB disk space, a full
- installation of all packages approx. 270MB. See below ("Getting
+ installation of all packages approx. 300MB. See below ("Getting
  started") for instructions.
 
 
@@ -29,11 +27,26 @@ Getting started:
   successful, the fun_plug.tgz file is unpacked (ffp directory) and
   deleted. A telnet server is started.
 
-  Using rsync, you can now download and install packages with:
+  Many programs are included in the install tarball, e.g.
+
+    * Lighttpd Web Server
+    * OpenSSH Secure Shell
+    * Mediatomb UPnP Media Server
+    * NTP Network Time Daemon
+    * UNFS3 User-Space NFS Server
+    * NFS-Utils NFS Server (required kernel support)
+    * RSync File Transfer Utility
+   
+  For more detailed instructions on how to configure and use
+  these programs, see:
+
+    http://wiki.dns323.info/howto:ffp#experimental_version_0.5
+ 
+  Using rsync, you can download and install additional packages with:
 
     telnet bob
     cd /mnt/HD_a2
-    rsync -av inreto.de::dns323/fun-plug/0.5-experimental/packages .
+    rsync -av inreto.de::dns323/fun-plug/0.5/packages .
     cd packages
     funpkg -i *.tgz
 
