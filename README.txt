@@ -40,7 +40,7 @@ Getting started:
   For more detailed instructions on how to configure and use
   these programs, see:
 
-    http://wiki.dns323.info/howto:ffp#experimental_version_0.5
+    http://wiki.dns323.info/howto:ffp#version_0.5_beta
  
   Using rsync, you can download and install additional packages with:
 

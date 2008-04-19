@@ -1,4 +1,88 @@
 +------------------------------------------------------------------------------+
+Sat Apr 19 15:30:10 CEST 2008
+RPATH-Update: Almost all packages have been rebuilt. Programs and libs are now tagged with
+an RPATH to prevent ffp programs use firmware libraries (even with LD_LIBRARY_PATH set). This
+should fix the problems with the latest CH3SNAS firmware. This update also fixes subversion
+that now supports http, https URLs.
+
+fun_plug.tgz: Rebuilt from latest packages.
+
+neon-0.25.5-1.tgz: Downgraded to version 0.25.5. Subversion wont accept newer versions.
+subversion-1.4.6-2.tgz: Rebuilt. http and https URLs should work now.
+
+busybox-1.10.1-1.tgz: Upgraded to 1.10.1.
+gcc-4.1-2.tgz: Upgraded to latest svn version.
+uclibc-0.9.29-3.tgz: Upgraded to latest svn version.
+
+apr-1.2.12-2.tgz: Rebuilt.
+autoconf-2.61-2.tgz: Rebuilt.
+automake-1.10.1-2.tgz: Rebuilt.
+bash-3.2-3.tgz: Rebuilt.
+binutils-2.18.50.0.1-4.tgz: Rebuilt.
+bison-2.3-3.tgz: Rebuilt.
+btpd-0.13-4.tgz: Rebuilt.
+bzip2-1.0.5-2.tgz: Rebuilt.
+coreutils-6.10-2.tgz: Rebuilt.
+cvs-1.11.22-2.tgz: Rebuilt.
+dejagnu-1.4.4-2.tgz: Rebuilt.
+dialog-1.1-3.tgz: Rebuilt.
+diffutils-2.8.7-3.tgz: Rebuilt.
+dns323-utils-0.7.176-2.tgz: Rebuilt.
+dnsmasq-2.41-2.tgz: Rebuilt.
+e2fsprogs-1.40.6-3.tgz: Rebuilt.
+expat-2.0.1-3.tgz: Rebuilt.
+expect-5.43.0-2.tgz: Rebuilt.
+ffp-scripts-0.5-16.tgz: Rebuilt.
+file-4.23-3.tgz: Rebuilt.
+findutils-4.2.32-2.tgz: Rebuilt.
+flex-2.5.33-4.tgz: Rebuilt.
+gawk-3.1.6-3.tgz: Rebuilt.
+gdb-6.6-2.tgz: Rebuilt.
+gettext-0.17-2.tgz: Rebuilt.
+grep-2.5.3-2.tgz: Rebuilt.
+groff-1.19.2-3.tgz: Rebuilt.
+gzip-1.3.12-2.tgz: Rebuilt.
+id3lib-3.8.3-3.tgz: Rebuilt.
+less-418-3.tgz: Rebuilt.
+libiconv-1.12-3.tgz: Rebuilt.
+lighttpd-1.4.19-4.tgz: Rebuilt.
+m4-1.4.10-2.tgz: Rebuilt.
+make-3.81-3.tgz: Rebuilt.
+man-1.6e-3.tgz: Rebuilt.
+mediatomb-0.11.0-5.tgz: Rebuilt.
+ncurses-5.6-4.tgz: Rebuilt.
+nfs-utils-1.1.0-4.tgz: Rebuilt.
+ntp-4.2.4p4-4.tgz: Rebuilt.
+openssh-5.0p1-2.tgz: Rebuilt.
+openssl-0.9.8g-3.tgz: Rebuilt.
+patch-2.5.9-3.tgz: Rebuilt.
+pcre-7.4-3.tgz: Rebuilt.
+perl-5.8.8-2.tgz: Rebuilt.
+php-5.2.5-4.tgz: Rebuilt.
+portmap-6.0-4.tgz: Rebuilt.
+rcorder-cvs-4.tgz: Rebuilt.
+readline-5.2-3.tgz: Rebuilt.
+rsync-3.0.2-2.tgz: Rebuilt.
+sed-4.1.5-3.tgz: Rebuilt.
+shadow-4.0.18.2-2.tgz: Rebuilt.
+smartmontools-5.38-2.tgz: Rebuilt.
+sqlite-3.5.6-3.tgz: Rebuilt.
+strace-4.5.16-3.tgz: Rebuilt.
+tar-1.19-2.tgz: Rebuilt.
+tcl-8.4.16-2.tgz: Rebuilt.
+tcp_wrappers-7.6-3.tgz: Rebuilt.
+texinfo-4.11-3.tgz: Rebuilt.
+tree-1.5.1.1-2.tgz: Rebuilt.
+unfs3-0.9.20-4.tgz: Rebuilt.
+vim-7.1-2.tgz: Rebuilt.
+zlib-1.2.3-3.tgz: Rebuilt.
++------------------------------------------------------------------------------+
+Sun Apr 13 23:52:31 CEST 2008
+smartmontools-5.38-1: Added. Requested by marinalink.
++------------------------------------------------------------------------------+
+Sun Apr 13 15:41:27 CEST 2008
+fun_plug.tgz: Updated. sqlite libraries were missing (needed by mediatomb).
++------------------------------------------------------------------------------+
 Sun Apr 13 14:12:18 CEST 2008
 fun_plug: Updated. Removed unused FFP_TMP variable.
 fun_plug.tgz: Rebuilt from latest packages, added lots of stuff. 
