@@ -1,4 +1,16 @@
 +------------------------------------------------------------------------------+
+Fri Apr 25 13:41:11 CEST 2008
+tcl-8.4.16-3: Updated. Fixed /ffp/bin/tclsh symlink.
++------------------------------------------------------------------------------+
+Fri Apr 25 11:13:55 CEST 2008
+openssh-5.0p1-3: Updated. Recompiled with --with-tcp-wrappers as recommended
+	by forre in http://forum.dsmg600.info/t2077-DenyHosts-Fonz.html
++------------------------------------------------------------------------------+
+Fri Apr 25 10:54:16 CEST 2008
+busybox-1.10.1-2: Updated. "completion" and "ioctl" patches.
+smartmontools-5.38-3: Updated. Removed etc/rc.d/init.d/...
+parted-1.8.8-1: Added. In preparation for new fsck tool.
++------------------------------------------------------------------------------+
 Sat Apr 19 15:30:10 CEST 2008
 RPATH-Update: Almost all packages have been rebuilt. Programs and libs are now tagged with
 an RPATH to prevent ffp programs use firmware libraries (even with LD_LIBRARY_PATH set). This
