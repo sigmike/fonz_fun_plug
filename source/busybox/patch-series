@@ -1,2 +1,3 @@
 busybox-1.10.1-completion.patch
 busybox-1.10.1-ioctl.patch
+busybox-1.10.1-taskset.patch

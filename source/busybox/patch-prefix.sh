@@ -23,11 +23,6 @@
                 -e "/tmp = pw->pw_shell/ s@pw->pw_shell@\"$CPREFIX/bin/sh\"@" \
                 loginutils/login.c
 
-        # inittab path
-        sed -i \
-                -e "/INITTAB/ s@/etc/inittab@$CPREFIX&@" \
-                init/init.c
-
         # udhcpd.conf path
         sed -i \
                 -e "/DHCPD_CONF_FILE/ s@/etc/udhcpd.conf@$CPREFIX&@" \
