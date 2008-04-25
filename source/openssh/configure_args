@@ -2,3 +2,4 @@
 --with-md5-passwords
 --with-privsep-path=$CPREFIX/var/lib/sshd
 --prefix=$CPREFIX
+--with-tcp-wrappers
