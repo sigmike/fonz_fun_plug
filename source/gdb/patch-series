@@ -1,0 +1,3 @@
+100-uclibc-conf.patch
+600-fix-compile-flag-mismatch.patch
+700-nios2-6.6.patch
