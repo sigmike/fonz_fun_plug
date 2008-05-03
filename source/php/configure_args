@@ -20,4 +20,5 @@
 --with-openssl=$CPREFIX
 --enable-pcntl
 --enable-sigchild
+--enable-ftp=shared
 
