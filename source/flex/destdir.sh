@@ -11,8 +11,8 @@
     mkdir -p $D$CPREFIX/bin
     cat > $D$CPREFIX/bin/lex <<EOF
 #!/bin/sh
-exec $CPREFIX/bin/flex -l "$@"
-EOF 
+exec $CPREFIX/bin/flex -l "\$@"
+EOF
 
-    chmod 755 $D$CPREFIX/bin/lex
+chmod 755 $D$CPREFIX/bin/lex
 
