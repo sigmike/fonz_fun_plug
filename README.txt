@@ -92,4 +92,8 @@ Release notes:
   libraries in /ffp, too. If you want them to run with firmware
   libraries (e.g. to prevent disk accesses), use a package from here:
    http://www.inreto.de/dns323/utils/
-  
+
+- I've been told that ffp 0.5 can also be run on a Linksys WRT 350N
+  wireless router. For details and discussions, see
+   http://www.linksysinfo.org/forums/showthread.php?t=57932
+
