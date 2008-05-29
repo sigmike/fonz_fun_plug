@@ -21,4 +21,6 @@
 --enable-pcntl
 --enable-sigchild
 --enable-ftp=shared
-
+--with-gd=shared
+--with-jpeg-dir=$CPREFIX
+--with-png-dir=$CPREFIX
