@@ -209,7 +209,7 @@ cd $WORKDIR
 find_distfile()
 {
 	check_required_dirs $DISTDIR
-	for _ext in "" .tar.bz2 .tar.gz .tgz .tar; do
+	for _ext in .tar.bz2 .tar.gz .tgz .tar ""; do
 		if [ -r "$DISTDIR/$1$_ext" ]; then
 			echo "$DISTDIR/$1$_ext"
 			break
@@ -269,7 +269,8 @@ for _f in $(find . -name config.sub -o -name config.guess); do
     # keep old file, we need its timestamp
     mv $_f $_f.orig                     
     # create a new file (and don't symlink, since we want to touch it)
-    cat $CONFDIR/$(basename $_f) >$_f 
+    cat $CONFDIR/$(basename $_f) >$_f
+    chmod 0755 $_f 
     # keep modification time to prevent dependency issues (autoconf)
     # don't fail if touch doesn't support -r (busybox)
     touch -r $_f.orig $_f || true
