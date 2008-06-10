@@ -1,4 +1,17 @@
 +------------------------------------------------------------------------------+
+Tue Jun 10 10:37:45 CEST 2008
+imagemagick-6.4.1_6-1: Added. Requires libjpeg and libpng.
++------------------------------------------------------------------------------+
+Mon Jun  9 10:38:51 CEST 2008
+busybox-1.10.3-1: Upgraded to latest stable version.
++------------------------------------------------------------------------------+
+Thu May 29 13:27:30 CEST 2008
+libpng-1.2.29-1: Added.
+libjpeg-6b-1: Added.
+php-5.2.6-2: Recompiled with GD support. To enable GD, add "extension=gd.so"
+	to the [php] section of your /ffp/etc/php.ini file. GD needs libpng and 
+	libjpeg.
++------------------------------------------------------------------------------+
 Thu May 22 19:54:22 CEST 2008
 libusb-0.1.12-1: Added.
 usbutils-0.73-1: Added.
