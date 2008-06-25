@@ -243,6 +243,11 @@ for _f in $A; do
 	fi
 done
 
+if [ -r $X/unpack.sh ]; then
+	info "  unpack.sh ..."
+	cd $WORKDIR
+	. $X/unpack.sh
+fi	
 
 # check that we got $S directory
 [ -n "$A" ] && check_required_dirs $S
