@@ -69,6 +69,10 @@ Release notes:
   variable in the fun_plug script accordingly (and add code to mount
   the USB key).
 
+- For the DNS-323, there's a method to boot ffp and a recent kernel
+  with NFS support:
+    http://wiki.dns323.info/howto:ffp-reloaded
+
 - The 0.5 version is built with a custom toolchain based on
   binutils-2.18, gcc-4.1 and uClibc-0.9.29. Consequently, the 0.5
   funplug comes with its own set of runtime libraries in
@@ -93,7 +97,6 @@ Release notes:
   libraries (e.g. to prevent disk accesses), use a package from here:
    http://www.inreto.de/dns323/utils/
 
-- I've been told that ffp 0.5 can also be run on a Linksys WRT 350N
-  wireless router. For details and discussions, see
+- ffp can be run on a Linksys WRT 350N wireless router:
    http://www.linksysinfo.org/forums/showthread.php?t=57932
 
