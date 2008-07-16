@@ -1,0 +1,2 @@
+swat stream tcp nowait.400 root /ffp/sbin/swat swat
+

@@ -1,0 +1,8 @@
+--sysconfdir=$CPREFIX/etc
+--localstatedir=$CPREFIX/var
+--with-piddir=$CPREFIX/var/run
+--with-fhs
+--with-smbmount
+--with-libiconv=$CPREFIX
+libreplace_cv_HAVE_IPV6=no
+
