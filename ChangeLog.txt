@@ -1,4 +1,12 @@
 +------------------------------------------------------------------------------+
+Thu Jul 17 20:29:13 CEST 2008
+mdadm-2.6.7-1: Added. Note that this requires at least uclibc-0.9.29-4.
+uclibc-0.9.29-4: Upgraded to latest SVN version. Enabled FTW support needed
+	for mdadm.
++------------------------------------------------------------------------------+
+Thu Jul 17 16:51:32 CEST 2008
+rsync-3.0.3-1: Upgraded.
++------------------------------------------------------------------------------+
 Wed Jul 16 17:42:17 CEST 2008
 e2fsprogs-1.41.0-1: Upgraded.
 dnsmasq-2.43-1: Upgraded, added /ffp/start/dnsmasq.sh.
