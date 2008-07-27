@@ -1,0 +1,5 @@
+install_doc Artistic COPYING FAQ FEATURES HISTORY INSTALL KNOWN_BUGS README
+
+make BASENAME=$D/usr VISIBLE_BASENAME=/usr LOCKINGTEST=/tmp install
+make BASENAME=$D/usr VISIBLE_BASENAME=/usr install-suid
+
