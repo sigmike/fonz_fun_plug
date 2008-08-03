@@ -259,11 +259,23 @@ mkdir -p $B $D
 
 # P patch
 # apply patches listed in $X/patch-series
+cat_prog()
+{
+    case "$1" in
+        *.gz)
+            echo zcat
+            ;;
+        *)
+            echo cat
+            ;;
+    esac
+}
+    
 if [ -r $X/patch-series ]; then
     info "  patch-series ..."
     cd $S
     _patch_series_cmd=$(cat $X/patch-series | while read _f _popt; do
-        echo patch -N ${_popt:--p1} -i $PATCHDIR/$P/$_f
+            echo "$(cat_prog $_f) $PATCHDIR/$P/$_f | patch -N ${_popt:--p1}"
     done)
     eval "$_patch_series_cmd"
 fi
