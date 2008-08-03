@@ -1,0 +1,9 @@
+--with-user=root
+--with-group=root
+#--with-cgi
+--with-lib
+--sysconfdir=$CSYSCONFDIR
+--with-hotplug-dir=$CSYSCONFDIR/hotplug
+--with-udev-dir=$CSYSCONFDIR/udev
+--with-statepath=$CPREFIX/var/state/ups
+
