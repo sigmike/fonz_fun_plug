@@ -1,7 +1,11 @@
 #!/bin/sh
 
+# switch to safe working directory on ramdisk
+cd /
+
 # write a log, in case sth goes wrong
 FFP_LOG=/mnt/HD_a2/ffp.log
+#FFP_LOG=/dev/null
 exec >>$FFP_LOG 2>&1
 
 # real path to ffp
@@ -16,7 +20,7 @@ FFP_TARBALL=/mnt/HD_a2/fun_plug.tgz
 # rc file path
 FFP_RC=$FFP_PREFIX/etc/rc
 
-echo "**** fun_plug script for DNS-323 (2008-04-13 tp@fonz.de) ****"
+echo "**** fun_plug script for DNS-323 (2008-08-10 tp@fonz.de) ****"
 date
 
 # first, create FFP_PREFIX link
@@ -26,7 +30,7 @@ ln -snf $FFP_PATH $FFP_PREFIX
 # install tarball
 if [ -r $FFP_TARBALL ]; then
     echo "* Installing $FFP_TARBALL ..."
-    mkdir -p $FFP_PATH && tar xzvf $FFP_TARBALL -C $FFP_PATH
+    mkdir -p $FFP_PATH && tar xzf $FFP_TARBALL -C $FFP_PATH && /ffp/bin/tar xzf $FFP_TARBALL -C $FFP_PATH
     if [ $? -eq 0 ]; then
         echo "* OK"
     fi
