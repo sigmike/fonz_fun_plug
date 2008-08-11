@@ -356,10 +356,12 @@ for _f in $(find $CONFDIR -name destdir-\*.sh); do
 		. $_f
 	fi
 done
-for _f in $(find $X -name destdir-\*.sh); do
-	info "  $(basename $_f) ..."
-	cd $B
-	. $_f
+for _f in $X/destdir-*.sh; do
+	if [ -r "$_f" ]; then
+		info "  $(basename $_f) ..."
+		cd $B
+		. $_f
+	fi
 done
 # run scripts from config/destdir-checks/
 for _f in $CONFDIR/destdir-checks/*.sh; do
