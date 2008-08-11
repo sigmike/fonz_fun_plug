@@ -1,0 +1,11 @@
+--- glusterfs-1.3.10.orig/libglusterfs/src/compat.h	2008-06-06 05:02:50.000000000 +0200
++++ glusterfs-1.3.10/libglusterfs/src/compat.h	2008-07-30 19:49:18.000000000 +0200
+@@ -214,4 +214,8 @@
+ 
+ #endif /* GF_SOLARIS_HOST_OS */
+ 
++#ifdef __UCLIBC__
++#define lutimes(filename,times)              utimes(filename,times)
++#endif
++
+ #endif /* __COMPAT_H__ */
