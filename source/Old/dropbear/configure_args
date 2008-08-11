@@ -1,6 +1,0 @@
---disable-utmp
---disable-utmpx
---disable-wtmp
---disable-wtmpx
---disable-lastlog
-
