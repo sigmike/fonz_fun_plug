@@ -6,7 +6,7 @@ PKGDIR=$CWD/packages
 WORKDIR=$CWD/work/fun_plug
 D=$WORKDIR/sysroot
 CPREFIX=/ffp
-FUNPKG=$CWD/source/ffp-scripts/files/sbin/funpkg
+FUNPKG=$CWD/source/funpkg/files/ffp/sbin/funpkg
 TAR=tar-1.13
 
 # helper functions
@@ -100,8 +100,8 @@ done
 plist=(
     expat
     gcc
+    libusb
     libxml2
-    #ncurses
     openssl
     pcre
     readline
@@ -128,9 +128,11 @@ plist=(
     dialog
     dns323-utils
     ffp-scripts
+    funpkg
     groff
     less
     lighttpd
+    lsof
     man
     mediatomb
     nfs-utils
@@ -142,6 +144,7 @@ plist=(
     shadow
     strace
     unfs3
+    usbutils
     #vim
 )
 

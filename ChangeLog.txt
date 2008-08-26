@@ -1,4 +1,57 @@
 +------------------------------------------------------------------------------+
+Sun Aug 24 12:42:54 CEST 2008
+mysql-5.0.67-1: Added.
+gd-2.0.35-1: Added.
++------------------------------------------------------------------------------+
+Wed Aug 20 22:30:31 CEST 2008
+
+Today's update includes changes to some critical files. I recommend
+you install all of them and also update the fun_plug script, or start
+over with a fresh install.
+
+fun_plug: Various improvements.
+  - cd to ramdisk, hopefully helps with the CH3SNAS spindown problem:
+    http://www.aroundmyroom.com/2008/08/04/ch3snas-status-update/#comment-34194
+  - better support for ffp on USB stick (see FFP_SETUP_SCRIPT)
+  - fix broken links during install through a second tar run, but with
+    the working tar version from ffp; there will still be warnings in
+    ffp.log from the first run with the broken /bin/tar
+  - runs /ffp/etc/fun_plug.init (replaces rcS.sh), and /ffp/etc/fun_plug.local
+    before /ffp/etc/rc. 
+fun_plug.tgz: Rebuilt from latest packages. Added libusb, usbutils and lsof.
+
+ffp-scripts-0.5-17: Updated. This package needs the new fun_plug script!
+  - rcS.sh and shells.sh replaced by /ffp/etc/fun_plug.init
+  - start/telnetd.sh moved to busybox package
+  - moved usbdisk.sh from start/ to /ffp/etc/examples/start-usbdisk.sh
+  - removed adjtimex and passwd start scripts, use fun_plug.local instead
+  - added fun_plug.local example script
+  fun_plug.local will not be overwritten by package updates! It's there for your
+  own commands.
+
+funpkg-0.5-1: Added. Moved funpkg to its own package.
+busybox-1.11.1-2: Updated. Added ash, basename, build, modutils and tar
+	patches. Added start/telnetd.sh.
+pcre-7.7-1: Upgraded. Interestingly, I couldn't build this package on
+	Linux 2.6.12.6 (firmware kernel), gcc crashed again and again.
+	The build worked without problems in ffp-reloaded using 2.6.25.1.
+pciutils-3.0.0-1: Added.
+gzip-1.3.12-3: Updated. Fixed interpreter lines in zcat et al to /ffp/bin/sh.
++------------------------------------------------------------------------------+
+Wed Jul 30 20:41:29 CEST 2008
+glusterfs-1.3.10-2: Updated. Hopefully fixed undefined symbol 'lutimes'.
++------------------------------------------------------------------------------+
+Wed Jul 30 14:29:30 CEST 2008
+glusterfs-1.3.10-1: Added.
++------------------------------------------------------------------------------+
+Tue Jul 29 17:07:18 CEST 2008
+nzbget-0.4.1-2: Updated. Added example config to /ffp/etc/examples.
+openssh-5.1p1-1: Upgraded.
+openssl-0.9.8h-1: Upgraded. (* Security Fix *)
+	http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0891
+	http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1672
+	*Note*: You also need the latest uclibc packages.
++------------------------------------------------------------------------------+
 Tue Jul 29 01:13:00 CEST 2008
 cpio-2.9-1: Added.
 +------------------------------------------------------------------------------+
