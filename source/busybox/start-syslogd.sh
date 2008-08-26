@@ -2,7 +2,6 @@
 
 # PROVIDE: syslogd klogd
 # BEFORE: SERVERS
-# REQUIRE: rcS
 
 . /ffp/etc/ffp.subr
 
