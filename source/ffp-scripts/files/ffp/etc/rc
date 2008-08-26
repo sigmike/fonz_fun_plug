@@ -1,0 +1,46 @@
+#!/ffp/bin/sh
+
+export PATH=/ffp/sbin:/ffp/bin:/usr/sbin:/sbin:/usr/bin:/bin
+
+# We don't need LD_LIBRARY_PATH for funplug packages, and we
+# don't like surprises here (CH3SNAS firmware 1.03, see
+# http://forum.dsmg600.info/p13433-Yesterday-18%3A53%3A36.html#p13433 ).
+unset LD_LIBRARY_PATH
+
+
+# reverse order of elements in a list
+reverse_list()
+{
+        _list=
+        while [ $# -gt 0 ]; do
+                _list="$1 $_list"
+                shift
+        done
+        echo $_list
+}
+
+
+files=$(rcorder /ffp/start/*.sh)
+case "$1" in
+    
+    stop)
+        for f in $(reverse_list $files); do
+            if [ -x "$f" ]; then
+                $f stop
+            fi
+        done
+        ;;
+    
+    *)
+        for f in $files; do
+            if [ -x "$f" ]; then
+                echo "* $f ..."
+		$f start
+            else
+		echo "* $f inactive"
+            fi
+	done
+	;;
+
+esac
+

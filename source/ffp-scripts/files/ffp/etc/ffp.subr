@@ -149,7 +149,7 @@ run_rc_command()
             fi
             ;;
 
-       restart)
+        restart)
                if test -n "$restart_cmd"; then
                        $restart_cmd
                else
@@ -160,7 +160,20 @@ run_rc_command()
                ;;
 
         *)
-            echo "Usage: $(basename $0) start|stop|restart|status"
-            exit 1
+		# check $extra_commands
+		for _rc_cmd in $extra_commands; do
+			if [ "$1" = "$_rc_cmd" ]; then
+				eval _cmd=\$${_rc_cmd}_cmd
+                    		$_cmd
+				return 0
+			fi
+		done
+
+		# reject unknown commands
+		echo "Usage: $(basename $0) start|stop|restart|status"
+		if [ -n "$extra_commands" ]; then
+			echo "Extra commands: $extra_commands"
+		fi
+		exit 1
     esac
 }

@@ -1,10 +1,4 @@
-mkdir $D$CPREFIX
-cd $D$CPREFIX
+tar cf - --owner=root --group=root -C $FILESDIR --exclude=\*~ --exclude=.svn ffp | tar xf - -C $D
 
-tar cf - -C $FILESDIR \
-	--exclude=\*~ --exclude=.svn \
-	etc sbin | tar xf -
-
-# ensure correct permissions
-chown -R root:root *
+mkdir -p $D$CPREFIX/etc/profile.d
 

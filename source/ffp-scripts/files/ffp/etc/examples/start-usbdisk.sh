@@ -1,6 +1,6 @@
 #!/ffp/bin/sh
 
-# PROVIDES: mountusb
+# PROVIDES: usbdisk
 # BEFORE: LOGIN
 # REQUIRE: SERVERS
 

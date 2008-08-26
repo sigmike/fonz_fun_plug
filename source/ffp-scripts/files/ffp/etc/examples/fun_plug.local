@@ -1,0 +1,29 @@
+#!/ffp/bin/sh
+PATH=/ffp/sbin:/ffp/bin
+
+
+# Adjust clock speed to reduce drift
+# See 'adjtimex -h' for available options.
+# 9965 works for my DNS-323, ymmv.
+adjtimex -t 9965
+
+
+# Set local timezone
+# For a list of timezone strings see: 
+# http://www.nas-tweaks.net/CH3SNAS:Tutorials/ntp#Appendix:_Example_Timezone_Strings
+
+# Europe/Berlin
+echo 'CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00' >/etc/TZ
+
+
+# This removes firmware cronjobs that interfere with ntpd.
+#crontab -l | grep -vw '/usr/sbin/daylight' | grep -vw '/usr/sbin/rtc' | crontab -
+
+
+# Clear root password for convenient login (won't work with ssh)
+#usermod -p '' root
+
+
+# You might want to ensure that sshd is started.
+#chmod a+x /ffp/start/sshd.sh    
+
