@@ -1,4 +1,18 @@
 +------------------------------------------------------------------------------+
+Sat Aug 30 21:06:46 CEST 2008
+busybox-1.12.0-3: Upgraded. Added patches for awk, dhcp, and insmod. Note that
+	insmod still doesn't work well in busybox 1.12.0 (use /usr/sbin/insmod
+	instead).
+distcc-3.0-1: Added.
+samba-3.2.3-1: Upgraded. 
+	This is a security release to address CVE-2008-3789.
++------------------------------------------------------------------------------+
+Wed Aug 27 00:06:54 CEST 2008
+fun_plug.tgz. Rebuilt from latest packages.
+man-pages-3.07-1: Added.
+shadow-4.1.2.1-1: Upgraded.
+busybox-1.12.0-2: Upgraded.
++------------------------------------------------------------------------------+
 Sun Aug 24 12:42:54 CEST 2008
 mysql-5.0.67-1: Added.
 gd-2.0.35-1: Added.
