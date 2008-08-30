@@ -1,0 +1,324 @@
+#!/ffp/bin/sh
+#set -x
+
+ME=$(basename $0)
+
+usage()
+{
+    cat <<EOF
+funpkg $FUNPKG_VERSION
+Copyright (c) 2008 Tobias Poschwatta <tp@fonz.de>
+
+Install:   $ME -i <packages...>
+Reinstall: $ME -I <packages...>
+Upgrade:   $ME -u <packages...>
+Remove:    $ME -r <packages...> 
+
+Other options:
+  -D <path>  System root directory (default: /)
+
+EOF
+    exit 2
+}
+
+die()
+{
+    cat <<EOF
+FATAL: $@
+EOF
+    exit 1
+}
+
+info()
+{
+    cat <<EOF
+$@
+EOF
+}
+
+
+# low-level functions
+
+#  installpkg <pkg-file>
+installpkg()
+{
+    # checks
+    test $# -eq 1 || die "Internal Error: installpkg <pkg-file>"
+    test -e "$1"  || die "$1: File not found"
+
+    # unpack
+    #info "Unpacking $1 ..."
+    rm -rf $work && mkdir -p $work && \
+        tar xzf "$1" -C $work || \
+        die "$1: Failed to unpack package"
+
+	# check for $prefix
+	cd $work
+	test -d .$prefix || die "$1: $prefix not found in package"
+
+    # check for dangerous symlinks
+    cd $work
+    find . -type l | while read f; do
+        if test -d $sysroot/$f -a ! -h $sysroot/$f; then
+            die "$1: Symlink $f in package must not overwrite existing directory $sysroot/$f"
+        fi
+    done || exit 1
+
+    # install
+    PF=$(basename "$1" .tgz)
+    info "Installing package $PF ..."
+
+    # create pkgdb entry
+    cd $work
+    find .$prefix | grep -v "^\.$prefix\$" >$pkgdb/$PF
+
+	# install
+	mkdir -p $sysroot$prefix
+	tar cf - -C $work$prefix . | tar xf - -C $sysroot$prefix
+    
+    # dns323: ensure 0777 on /
+    chmod 0777 $sysroot/
+}
+
+#  remove_files <file-list>
+remove_files()
+{
+    cat "$1" | while read f; do
+        if test -e "$f" -a ! -d "$f" -a ! -h "$f"; then
+            echo "Removing file $f"
+            rm -f "$f"
+        fi
+    done
+}
+
+#  remove_dirs <file-list>
+remove_dirs()
+{
+    cat "$1" | while read f; do
+        if test -d "$f"; then
+            if test "$(ls -a $f 2>/dev/null | wc -l)" -le 2; then
+                echo "Removing empty directory $f"
+                rmdir "$f"
+            fi
+        fi
+    done
+}
+
+#  remove_links <file-list>
+remove_links()
+{
+    cat "$1" | while read f; do
+        if [ -h "$f" ]; then
+            echo "Removing link $f"
+            rm -f "$f"
+        fi
+    done
+}
+
+#  removepkg <pkg-name>
+removepkg()
+{
+    # checks
+    test $# -eq 1       || die "Internal Error: removepkg <pkg-name>"
+    test -e "$pkgdb/$1" || die "$1: No such package"
+
+    info "Removing package $1 ..."
+
+    # file lists
+    rm -rf $work && mkdir -p $work
+    mv $pkgdb/$1 $work
+    cat $work/$1 2>/dev/null | sort | uniq >$work/pkg
+    cat $pkgdb/* 2>/dev/null | sort | uniq >$work/keep
+    mv $work/$1 $pkgdb
+    comm -23 $work/pkg $work/keep | sort -r | \
+        sed -e '/^\.$/d' -e "s@^@/${sysroot}/@" -e 's@//@/@g' -e 's@/\./@/@g' \
+        >$work/remove
+
+    # remove files, dirs and links
+    remove_files $work/remove
+    remove_dirs  $work/remove
+    remove_links $work/remove
+    remove_dirs  $work/remove
+
+    # remove pkgdb entry
+    rm -f $pkgdb/$1
+}
+
+#  upgradepkg <old-pkg-name> <new-pkg-file>
+upgradepkg()
+{
+    # checks
+    test $# -eq 2       || die "Internal Error: upgradepkg <old-pkg-name> <new-pkg-file>"
+    test -e "$pkgdb/$1" || die "$1: No such package"
+    test -e "$2"        || die "$1: File not found"
+    
+    # install new package
+    installpkg "$2"
+    # remove old package
+    removepkg "$1"
+}
+
+
+# check pkgdb
+
+#  check_installed <pkg-file>
+check_installed()
+{
+    # checks
+    test $# -eq 1 || die "Internal Error: check_installed <pkg-file>"
+    test -e "$1"  || die "$1: File not found"
+
+    installed=no
+    
+    # check name-version-revision
+    p=$(basename "$1" .tgz)
+    if test -e $pkgdb/$p; then
+        installed=yes
+    else
+        # check name only
+        pn=$(echo $p | sed 's@-[^-]*-[^-]*$@@')
+        for f in $(cd $pkgdb; ls); do
+            if test "$(echo $f | sed 's@-[^-]*-[^-]*$@@')" = "$pn"; then
+                installed="$f"
+                break
+            fi
+        done
+    fi
+}
+
+#  find_installed <pkg-name>
+find_installed()
+{
+    # checks
+    test $# -eq 1 || die "Internal Error: find_installed <pkg-name>"
+
+    installed=no
+
+    # check name-version-revision, name-version and name
+    if test -e "$pkgdb/$1"; then
+        installed="$1"
+    elif test -e "$pkgdb/$(basename $1 .tgz)"; then
+        installed="$(basename $1 .tgz)"
+    else
+        for f in $(cd $pkgdb; ls); do
+            if test "$f" = "$1"; then
+                installed="$f"
+                break
+            elif test "$(echo $f | sed 's@-[^-]*$@@')" = "$1"; then
+                installed="$f"
+                break
+            elif test "$(echo $f | sed 's@-[^-]*-[^-]*$@@')" = "$1"; then
+                installed="$f"
+                break
+            fi
+        done
+    fi
+}
+
+
+
+# parse options
+test $# -gt 0 || usage
+_opts=$(getopt hiIurD: "$@") || usage
+eval set -- "$_opts"
+cmd=h
+prefix=/ffp
+sysroot=$(dirname $(readlink -f $prefix)/)
+while true; do
+    case "$1" in
+	-h)
+		usage
+		;;
+        -i)
+            cmd=i
+            shift
+            ;;
+        -I)
+            cmd=I
+            shift
+            ;;
+        -u)
+            cmd=u
+            shift
+            ;;
+        -r)
+            cmd=r
+            shift
+            ;;
+        -D)
+            sysroot="$2"
+            shift 2
+            ;;
+        --)
+            shift
+            break
+            ;;
+        *)
+            die "getopt error"
+            ;;
+    esac
+done
+test $cmd = "h" && usage
+
+CWD=$(pwd)
+pkgdb="$sysroot$prefix/var/packages"
+mkdir -p $pkgdb
+
+# setup work directory
+work=$sysroot$prefix/tmp/funpkg.$$
+rm -rf $work
+
+# process packages
+while [ $# -gt 0 ]; do
+    cd $CWD
+    case $cmd in
+
+        i)
+            check_installed "$1"
+            if test "$installed" = "no"; then
+                installpkg "$1"
+            elif test "$installed" = "yes"; then
+                info "Skipping $1 (already installed)"
+            else
+                info "Skipping $1 (installed: $installed)"
+            fi
+            ;;
+
+        I)
+            check_installed "$1"
+            if test "$installed" = "no"; then
+                installpkg "$1"
+            elif test "$installed" = "yes"; then
+                installpkg "$1"
+            else
+                info "Skipping $1 (installed: $installed)"
+            fi
+            ;;
+
+        u)
+            check_installed "$1"
+            if test "$installed" = "no"; then
+                info "Skipping $1 (not installed)"
+            elif test "$installed" = "yes"; then
+                info "Skipping $1 (already installed)"
+            else
+                upgradepkg "$installed" "$1"
+            fi
+            ;;
+
+        r)
+            find_installed "$1"
+            if test "$installed" = "no"; then
+                info "Skipping $1 (not installed)"
+            else
+                removepkg "$installed"
+            fi
+            ;;
+
+    esac
+    shift
+done
+
+# cleanup            
+rm -rf $work
+
