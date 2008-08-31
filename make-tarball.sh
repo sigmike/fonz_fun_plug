@@ -21,7 +21,7 @@ EOF
 
 find_pkg()
 {
-    _pkg=$(cd $PKGDIR; ls -1 $1-*.tgz | tail -n 1)
+    _pkg=$(cd $PKGDIR; ls -1 $1-*.tgz | egrep "$1"'-[^-]*-[^-]*.tgz$' | tail -n 1)
     [ -r "$PKGDIR/$_pkg" ] || die "$1: No package found"
     echo "$PKGDIR/$_pkg"
 }
