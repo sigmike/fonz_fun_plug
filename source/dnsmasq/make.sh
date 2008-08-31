@@ -1,4 +1,4 @@
     make \
         PREFIX=$CPREFIX \
-        CC=gcc AWK=awk
+        CC=${CC:-gcc} AWK=awk
 
