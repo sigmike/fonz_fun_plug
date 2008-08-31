@@ -40,3 +40,5 @@ bb_remove() {
 
 yes '' | make oldconfig
 
+export MAKEFLAGS="$MAKEFLAGS -j4"
+
