@@ -1,4 +1,15 @@
 +------------------------------------------------------------------------------+
+Mon Sep  1 18:45:43 CEST 2008
+mysql-5.0.67-2: Updated. Changes to start script (mysqld_flags was not used,
+	required separate mysql user). You still need to create /srv and
+	link it to the actual database dir, e.g. if you want mysql databases
+	in /mnt/HD_a2/srv/mysql, you need to create the link:
+		ln -s /mnt/HD_a2/srv /srv
+	Alternatively, you can try changing the config and/or pass additional
+	flags.
+php-5.2.6-3: Updated. Recompiled with mysql support. Don't forget to add 
+	'extension=mysql.so' to the [php] section of your /ffp/etc/php.ini.
++------------------------------------------------------------------------------+
 Sun Aug 31 21:07:42 CEST 2008
 fun_plug.tgz: Rebuilt from latest packages.
 busybox-1.11.2-1: Downgraded. 1.12.0 has a few nice features, but we need a 
