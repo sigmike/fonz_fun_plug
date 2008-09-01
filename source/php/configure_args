@@ -15,6 +15,9 @@
 --enable-mbstring=shared --enable-mbregex
 --enable-pdo=shared
 --with-sqlite=shared --enable-sqlite-utf8 --with-pdo-sqlite=shared
+--with-mysql=shared,$CPREFIX
+--with-pdo-mysql=shared,$CPREFIX
+--with-mysql-sock=$CPREFIX/var/run/mysql
 --enable-tokenizer=shared
 --with-zlib=shared --with-zlib-dir=$CPREFIX
 --with-openssl=$CPREFIX
@@ -24,3 +27,4 @@
 --with-gd=shared
 --with-jpeg-dir=$CPREFIX
 --with-png-dir=$CPREFIX
+
