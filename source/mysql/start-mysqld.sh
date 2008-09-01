@@ -10,15 +10,11 @@ start_cmd="mysqld_start"
 stop_cmd="mysqld_stop"
 status_cmd="mysqld_status"
 
-# Disable network connections. Comment out the following line if you
-# need to allow connections over the network.
-mysqld_skip="--skip-networking"
-
-mysqld_flags="--datadir=/srv/mysql --pidfile=/ffp/var/run/mysql/mysql.pid $mysqld_skip"
+mysqld_flags="--skip-networking --user=root"
 
 mysqld_start()
 {
-    proc_start_bg /ffp/bin/mysqld_safe
+	/ffp/bin/mysqld_safe $mysqld_flags </dev/null &
 }
 
 mysqld_stop()
