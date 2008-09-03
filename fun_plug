@@ -30,7 +30,7 @@ date
 # sourced, that means you can change variables, e.g. FFP_PATH to point
 # to the USB device.
 if [ -x $FFP_SETUP_SCRIPT ]; then
-    echo "* Running $SETUP ..."
+    echo "* Running $FFP_SETUP_SCRIPT ..."
     . $FFP_SETUP_SCRIPT
 fi
 
