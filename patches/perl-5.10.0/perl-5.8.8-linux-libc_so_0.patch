@@ -1,0 +1,15 @@
+--- perl-5.8.8/hints/linux.sh.orig	2008-03-06 17:12:36.000000000 +0100
++++ perl-5.8.8/hints/linux.sh	2008-03-06 17:14:01.000000000 +0100
+@@ -57,6 +57,12 @@
+     libc=${prefix}/lib/$libc
+ fi
+ 
++# uClibc is lib/libc.so.0
++if test -L ${prefix}/lib/libc.so.0; then
++    libc=`ls -l ${prefix}/lib/libc.so.0 | awk '{print $NF}'`
++    libc=${prefix}/lib/$libc
++fi
++
+ # Configure may fail to find lstat() since it's a static/inline
+ # function in <sys/stat.h>.
+ d_lstat=define
