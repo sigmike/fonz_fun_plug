@@ -1,2 +1,0 @@
-export LDDLFLAGS="${LDFLAGS}"
-
