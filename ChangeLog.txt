@@ -1,4 +1,11 @@
 +------------------------------------------------------------------------------+
+Fri Sep  5 20:04:23 CEST 2008
+subversion-1.5.2-1: Upgraded.
+perl-5.10.0-1: Upgraded.
++------------------------------------------------------------------------------+
+Wed Sep  3 18:53:57 CEST 2008
+fun_plug: Fixed 'cosmetic error' reported by DaveN. Thanks!
++------------------------------------------------------------------------------+
 Mon Sep  1 18:45:43 CEST 2008
 mysql-5.0.67-2: Updated. Changes to start script (mysqld_flags was not used,
 	required separate mysql user). You still need to create /srv and
