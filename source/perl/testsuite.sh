@@ -1,0 +1,2 @@
+make -k check || true
+
