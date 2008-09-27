@@ -25,6 +25,9 @@ fi
 chmod 0666 /dev/tty
 chmod 0666 /dev/null
 
+# fix /tmp permissions
+chmod 1777 /tmp
+
 # create accounting group and files, if missing
 if ! grep -wq utmp /etc/group; then
 	groupadd -g 22 utmp
