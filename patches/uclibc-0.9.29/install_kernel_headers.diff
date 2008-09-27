@@ -1,0 +1,10 @@
+--- uClibc/extra/scripts/install_kernel_headers.sh.orig	2008-09-25 09:57:25.000000000 +0200
++++ uClibc/extra/scripts/install_kernel_headers.sh	2008-09-25 09:57:35.000000000 +0200
+@@ -29,7 +29,6 @@
+ eval `grep ^KERNEL_HEADERS "$top_builddir/.config"`
+ if ! test "$KERNEL_HEADERS" \
+ || ! test -d "$KERNEL_HEADERS/asm" \
+-|| ! test -d "$KERNEL_HEADERS/asm-generic" \
+ || ! test -d "$KERNEL_HEADERS/linux" \
+ ; then
+ 	echo "Error: '$KERNEL_HEADERS' is not a directory containing kernel headers."
