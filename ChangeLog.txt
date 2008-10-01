@@ -1,4 +1,9 @@
 +------------------------------------------------------------------------------+
+Wed Oct  1 22:17:36 CEST 2008
+extra-packages/: Added new package directory. There are more than 100 packages
+	in ffp now. That's far more than most users are interested in. It's
+	time to separate mainstream and special-interest packages.
++------------------------------------------------------------------------------+
 Wed Oct  1 16:46:53 CEST 2008
 fun_plug.tgz: Rebuilt from latest packages.
 perl-5.10-2: Updated. This is the perl version from the squeezebox packages.
