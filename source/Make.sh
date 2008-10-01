@@ -379,10 +379,27 @@ find . -type f | xargs file | egrep 'ELF.*(executable|shared object)' 2>/dev/nul
     strip --strip-unneeded "$f" 2>/dev/null || true
 done
 
+
+# read package tags
+PKG_TAGS=
+if [ -r "$X/PKG_TAGS" ]; then
+    PKG_TAGS="$(cat $X/PKG_TAGS)"
+    PKGDIR=$TOPDIR/extra-packages/All
+fi
+
 # P package
 info "  package ..."
 cd $D
 [ -x $CONFDIR/makepkg.sh ] && $CONFDIR/makepkg.sh $PKGDIR/$PF
+
+# make PKG_TAGS links
+if [ -n "$PKG_TAGS" ]; then
+    for tag in $PKG_TAGS; do
+	echo "  extra-packages/$tag/$PF.tgz"
+	mkdir -p $TOPDIR/extra-packages/$tag
+	ln -s ../All/$PF.tgz $TOPDIR/extra-packages/$tag/$PF.tgz
+    done
+fi
 
 # OK
 info "  OK"
