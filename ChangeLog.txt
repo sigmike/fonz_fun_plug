@@ -1,4 +1,19 @@
 +------------------------------------------------------------------------------+
+Wed Oct  1 16:46:53 CEST 2008
+fun_plug.tgz: Rebuilt from latest packages.
+perl-5.10-2: Updated. This is the perl version from the squeezebox packages.
+lighttpd-1.4.20-1: Upgraded.
+openssh-5.1p1-2: Updated. Fix location of manpages.
+busybox-1.12.1-1: Upgraded.
+coreutils-6.12-1: Upgraded.
+uclibc-0.9.29-5: Upgraded.
+newlisp-9.4.5-1: Added.
++------------------------------------------------------------------------------+
+Wed Sep 17 09:15:20 CEST 2008
+rsync-3.0.4-1: Upgraded.
+nut-2.2.2-3: Updated. Added cgi-bin and html files; moved sample config files
+	to /ffp/etc/examples/nut. Thanks rcblackwell.
++------------------------------------------------------------------------------+
 Fri Sep  5 20:04:23 CEST 2008
 subversion-1.5.2-1: Upgraded.
 perl-5.10.0-1: Upgraded.
