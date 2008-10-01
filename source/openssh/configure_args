@@ -3,3 +3,5 @@
 --with-privsep-path=$CPREFIX/var/lib/sshd
 --prefix=$CPREFIX
 --with-tcp-wrappers
+ac_cv_path_NROFF=$(which nroff)
+
