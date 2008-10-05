@@ -1,4 +1,4 @@
 export TIMEOUTFACTOR=15
-make -k check UCLIBC_ONLY=1 || true
+make -k check UCLIBC_ONLY=1 V=1 UCLIBC_EXTRA_LDFLAGS="$LDFLAGS" CC="${CC}" || true
 
 
