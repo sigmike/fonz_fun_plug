@@ -1,4 +1,18 @@
 +------------------------------------------------------------------------------+
+Thu Oct  2 09:56:49 CEST 2008
+These are the packages required to run slimserver.
+perl-mod-Compress-Zlib-2.011-1: Added.
+perl-mod-DBD-mysql-4.008-1: Added.
+perl-mod-DBI-1.607-1: Added.
+perl-mod-Encode-Detect-1.01-1: Added.
+perl-mod-GD-2.41-1: Added.
+perl-mod-HTML-Parser-3.56-1: Added.
+perl-mod-HTML-Tagset-3.20-1: Added.
+perl-mod-Template-Toolkit-2.20-1: Added.
+perl-mod-XML-Parser-2.36-1: Added.
+perl-5.10-2: Moved to extra-packages.
+squeezecenter-7.2-1: Added.
++------------------------------------------------------------------------------+
 Wed Oct  1 22:17:36 CEST 2008
 extra-packages/: Added new package directory. There are more than 100 packages
 	in ffp now. That's far more than most users are interested in. It's
