@@ -4,5 +4,5 @@ export DISTCC_DIR=$CONFDIR/distcc
 export CC="distcc gcc"
 export CXX="distcc g++"
 
-export MAKEFLAGS="$MAKEFLAGS CC=${CC} CXX=${CXX}"
+#export MAKEFLAGS="$MAKEFLAGS CC=${CC} CXX=${CXX}"
 
