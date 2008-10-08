@@ -1,0 +1,10 @@
+expat
+gcc
+libusb
+libxml2
+openssl
+pcre
+readline
+tcp_wrappers
+zlib
+
