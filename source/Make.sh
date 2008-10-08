@@ -397,7 +397,7 @@ if [ -n "$PKG_TAGS" ]; then
     for tag in $PKG_TAGS; do
 	echo "  extra-packages/$tag/$PF.tgz"
 	mkdir -p $TOPDIR/extra-packages/$tag
-	ln -s ../All/$PF.tgz $TOPDIR/extra-packages/$tag/$PF.tgz
+	ln -sf ../All/$PF.tgz $TOPDIR/extra-packages/$tag/$PF.tgz
     done
 fi
 
