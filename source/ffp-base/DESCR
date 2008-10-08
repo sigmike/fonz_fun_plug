@@ -6,3 +6,8 @@ ffp-base also includes the complete set of busybox links. Note that upgrading
 this package will restore these links unconditionally and overwrite programs 
 from the coreutils package (if installed).
 
+ffp-base contains libraries and programs from
+  uclibc, e2fsprogs, file, libiconv, ncurses, sqlite
+and libraries from
+  expat, gcc, libusb, libxml2, openssl, pcre, readline, tcp_wrappers, zlib
+

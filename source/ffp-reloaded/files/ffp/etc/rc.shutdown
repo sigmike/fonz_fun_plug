@@ -1,0 +1,11 @@
+#!/ffp/bin/sh
+
+# stop ffp 
+/ffp/etc/rc stop
+
+# clean up the rest
+swapoff -a
+sync
+sleep 1
+umount -a -r
+sleep 1

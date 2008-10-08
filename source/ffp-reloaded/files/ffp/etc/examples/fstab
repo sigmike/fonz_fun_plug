@@ -1,0 +1,6 @@
+/dev/sda1	swap		swap	defaults	0	0
+
+sysfs		/sys		sysfs	defaults	0	0
+proc		/proc		proc	defaults	0	0
+devpts		/dev/pts	devpts	mode=0620	0	0
+
