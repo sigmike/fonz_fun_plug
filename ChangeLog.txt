@@ -1,4 +1,23 @@
 +------------------------------------------------------------------------------+
+Wed Oct  8 19:05:31 CEST 2008
+linux-kernel-2.6.25.1-2: Moved to extra-packages/ffp-reloaded.
++------------------------------------------------------------------------------+
+Wed Oct  8 16:42:24 CEST 2008
+ffp-reloaded-0.5-2: Moved to extra-packages/ffp-reloaded.
+iana-etc-2.30-1: Moved to extra-packages/ffp-reloaded.
++------------------------------------------------------------------------------+
+Wed Oct  8 14:31:16 CEST 2008
+samba-3.2.3-1: Moved to extra-packages/net/. samba is part of most firmwares,
+	the separate version is not needed very often.
++------------------------------------------------------------------------------+
+Wed Oct  8 10:42:00 CEST 2008
+ffp-base-0.5-1: Added.
+vsftpd-2.0.7-2: Added.
++------------------------------------------------------------------------------+
+Sun Oct  5 15:32:27 CEST 2008
+strace-4.5.18-1: Upgraded. Added no-cachectl patch from openembedded to fix
+	build problem with latest uclibc.
++------------------------------------------------------------------------------+
 Thu Oct  2 09:56:49 CEST 2008
 These are the packages required to run slimserver.
 perl-mod-Compress-Zlib-2.011-1: Added.
