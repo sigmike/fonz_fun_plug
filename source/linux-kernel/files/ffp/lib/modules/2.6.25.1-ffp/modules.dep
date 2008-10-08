@@ -1,0 +1,20 @@
+/lib/modules/2.6.25.1-ffp/kernel/crypto/pcbc.ko: /lib/modules/2.6.25.1-ffp/kernel/crypto/crypto_blkcipher.ko /lib/modules/2.6.25.1-ffp/kernel/crypto/crypto_algapi.ko
+/lib/modules/2.6.25.1-ffp/kernel/crypto/blowfish.ko: /lib/modules/2.6.25.1-ffp/kernel/crypto/crypto_algapi.ko
+/lib/modules/2.6.25.1-ffp/kernel/crypto/cbc.ko: /lib/modules/2.6.25.1-ffp/kernel/crypto/crypto_blkcipher.ko /lib/modules/2.6.25.1-ffp/kernel/crypto/crypto_algapi.ko
+/lib/modules/2.6.25.1-ffp/kernel/crypto/cryptomgr.ko: /lib/modules/2.6.25.1-ffp/kernel/crypto/crypto_algapi.ko
+/lib/modules/2.6.25.1-ffp/kernel/crypto/crypto_algapi.ko:
+/lib/modules/2.6.25.1-ffp/kernel/crypto/crypto_blkcipher.ko: /lib/modules/2.6.25.1-ffp/kernel/crypto/crypto_algapi.ko
+/lib/modules/2.6.25.1-ffp/kernel/crypto/aes_generic.ko: /lib/modules/2.6.25.1-ffp/kernel/crypto/crypto_algapi.ko
+/lib/modules/2.6.25.1-ffp/kernel/crypto/sha1_generic.ko: /lib/modules/2.6.25.1-ffp/kernel/crypto/crypto_algapi.ko
+/lib/modules/2.6.25.1-ffp/kernel/crypto/deflate.ko: /lib/modules/2.6.25.1-ffp/kernel/crypto/crypto_algapi.ko
+/lib/modules/2.6.25.1-ffp/kernel/crypto/md5.ko: /lib/modules/2.6.25.1-ffp/kernel/crypto/crypto_algapi.ko
+/lib/modules/2.6.25.1-ffp/kernel/crypto/ecb.ko: /lib/modules/2.6.25.1-ffp/kernel/crypto/crypto_blkcipher.ko /lib/modules/2.6.25.1-ffp/kernel/crypto/crypto_algapi.ko
+/lib/modules/2.6.25.1-ffp/kernel/net/core/pktgen.ko:
+/lib/modules/2.6.25.1-ffp/kernel/net/ipv4/tunnel4.ko:
+/lib/modules/2.6.25.1-ffp/kernel/net/ipv6/xfrm6_mode_transport.ko:
+/lib/modules/2.6.25.1-ffp/kernel/net/ipv6/sit.ko: /lib/modules/2.6.25.1-ffp/kernel/net/ipv4/tunnel4.ko
+/lib/modules/2.6.25.1-ffp/kernel/net/ipv6/xfrm6_mode_tunnel.ko:
+/lib/modules/2.6.25.1-ffp/kernel/net/ipv6/xfrm6_mode_beet.ko:
+/lib/modules/2.6.25.1-ffp/kernel/fs/udf/udf.ko:
+/lib/modules/2.6.25.1-ffp/kernel/fs/fuse/fuse.ko:
+/lib/modules/2.6.25.1-ffp/kernel/drivers/scsi/scsi_wait_scan.ko:
