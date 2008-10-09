@@ -1,4 +1,8 @@
 +------------------------------------------------------------------------------+
+Thu Oct  9 12:46:29 CEST 2008
+uclibc-0.9.29-7: Upgraded to latest svn version. This fixes a couple of bugs,
+	e.g. the missing clock_getres() reported by Uli.
++------------------------------------------------------------------------------+
 Wed Oct  8 19:05:31 CEST 2008
 linux-kernel-2.6.25.1-2: Moved to extra-packages/ffp-reloaded.
 +------------------------------------------------------------------------------+
