@@ -1,0 +1,17 @@
+ffp-base
+
+perl
+perl-mod-Compress-Zlib
+perl-mod-DBD-mysql
+perl-mod-DBI
+perl-mod-Encode-Detect
+perl-mod-GD
+perl-mod-HTML-Parser
+perl-mod-HTML-Tagset
+perl-mod-Template-Toolkit
+perl-mod-XML-Parser
+
+mysql
+
+squeezecenter
+
