@@ -1,0 +1,9 @@
+#!/ffp/bin/sh
+export PATH=/ffp/sbin:/ffp/bin
+
+# create database if necessary
+if [ ! -d /ffp/var/mysql ]; then
+	mysql_install_db
+fi
+
+

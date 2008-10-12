@@ -1,4 +1,14 @@
+busybox
 ffp-base
+ffp-scripts
+rcorder
+shadow
+
+db42
+expat
+gd
+libjpeg
+libpng
 
 perl
 perl-mod-Compress-Zlib
