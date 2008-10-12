@@ -1,7 +1,7 @@
 #!/ffp/bin/sh
 
 # PROVIDE: slimserver
-# REQUIRE: LOGIN
+# REQUIRE: LOGIN mysqld
 
 . /ffp/etc/ffp.subr
 
