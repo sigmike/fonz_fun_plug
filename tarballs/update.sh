@@ -56,6 +56,7 @@ done
 echo
 
 # customize
+export D X
 if [ -x "$X/customize.sh" ]; then
     echo "Customize ..."
     $X/customize.sh
