@@ -1,2 +1,2 @@
-make install
+make CC="${CC}" install
 

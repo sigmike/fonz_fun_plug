@@ -1,1 +1,1 @@
-make -k check || true
+make -k CC="${CC}" check || true
