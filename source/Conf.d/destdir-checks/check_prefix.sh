@@ -6,6 +6,9 @@ for _f in $(ls -a); do
     if test "$_f" = "." -o "$_f" = ".."; then
         continue
     fi
+	if test "$_f" = "install"; then
+		continue
+	fi
     if test "/$_f" != "$CPREFIX"; then
         die "$_f: Not allowed in package"
     fi
