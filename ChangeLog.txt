@@ -1,4 +1,23 @@
 +------------------------------------------------------------------------------+
+Mon Oct 13 10:38:56 CEST 2008
+funpkg-0.5-3: Updated. If a package contains a install/doinst.sh script, it
+	is run after installation. Also, if install/DESCR is present, it is
+	shown during installation.
+sudo-1.6.9p17-1: Added. Includes a doinst.sh script, upgrade funpkg, first.
++------------------------------------------------------------------------------+
+Sun Oct 12 14:10:55 CEST 2008
+libpar2-0.2-2: Updated. Recompiled with optware patches to (hopefully) fix
+	a crash bug during archive repair.
++------------------------------------------------------------------------------+
+Sun Oct 12 11:47:17 CEST 2008
+funpkg-0.5-2: Updated. Added whichpkg script, and /ffp/packages and /ffp/tmp
+	directories.
++------------------------------------------------------------------------------+
+Fri Oct 10 15:24:31 CEST 2008
+libsigc++-2.0.18-1: Added.
+libpar2-0.2-1: Added.
+nzbget-0.5.1-1: Upgraded.
++------------------------------------------------------------------------------+
 Thu Oct  9 12:46:29 CEST 2008
 uclibc-0.9.29-7: Upgraded to latest svn version. This fixes a couple of bugs,
 	e.g. the missing clock_getres() reported by Uli.
