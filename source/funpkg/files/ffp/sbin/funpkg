@@ -68,6 +68,11 @@ installpkg()
     PF=$(basename "$1" .tgz)
     info "Installing package $PF ..."
 
+	# show DESCR, if present
+	if [ -r $work/install/DESCR ]; then
+		cat $work/install/DESCR
+	fi
+
     # create pkgdb entry
     cd $work
     find .$prefix | grep -v "^\.$prefix\$" >$pkgdb/$PF
@@ -75,7 +80,13 @@ installpkg()
 	# install
 	mkdir -p $sysroot$prefix
 	tar cf - -C $work$prefix . | tar xf - -C $sysroot$prefix
-    
+
+	# run install/doinst.sh
+	if [ -r $work/install/doinst.sh ]; then
+		info "Executing install script for $PF ..." 
+		( cd $sysroot; sh $work/install/doinst.sh -install )
+	fi
+
     # dns323: ensure 0777 on /
     chmod 0777 $sysroot/
 }
