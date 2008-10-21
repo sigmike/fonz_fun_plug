@@ -36,8 +36,9 @@ fi
 # create essential files
 mkdir -p /var/run /var/log
 touch /var/run/utmp /var/log/btmp /var/log/lastlog /var/log/wtmp
-chgrp utmp /var/run/utmp
-chmod 0664 /var/run/utmp /var/log/lastlog
+#chgrp utmp /var/run/utmp
+#chmod 0664 /var/run/utmp /var/log/lastlog
+#chmod 0600 /var/log/btmp
 
 # add ffp shells to /etc/shells
 echo '/ffp/bin/sh' >>/etc/shells
