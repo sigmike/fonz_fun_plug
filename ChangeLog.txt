@@ -1,4 +1,16 @@
 +------------------------------------------------------------------------------+
+Sat Oct 25 12:13:13 CEST 2008
+ffp-scripts-0.5-18: Updated. Can we get away without the utmp group?
+	NOTE: You should have the latest funpkg installed. After upgrading
+	with funpkg -u, reinstall with funpkg -I.
+squeezecenter-7.2-2: Updated. Don't create slimserver user and group. Instead,
+	run as nobody:root. Also, create database automatically, if needed
+	(using /ffp/sbin/reset-slimserver-database.sh)
+tar_113-1.13-2: Added. Useful for ARMedslack installation (needed by
+	installpkg).
+sudo-1.6.9p17-2: Updated. Move timedir to /ffp/var/run/sudo (suggested by
+	puterboy). Also, remove lecture (--without-lecture).
++------------------------------------------------------------------------------+
 Mon Oct 13 10:38:56 CEST 2008
 funpkg-0.5-3: Updated. If a package contains a install/doinst.sh script, it
 	is run after installation. Also, if install/DESCR is present, it is
