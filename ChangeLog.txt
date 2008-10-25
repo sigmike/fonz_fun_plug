@@ -1,4 +1,9 @@
 +------------------------------------------------------------------------------+
+Sat Oct 25 12:59:37 CEST 2008
+nzbget-0.5.1-1: Removed. 
+libpar2-0.2-2: Removed. The package was broken. Please use the DNS-323
+	packages from http://nzbget.sourceforge.net/ instead.
++------------------------------------------------------------------------------+
 Sat Oct 25 12:13:13 CEST 2008
 ffp-scripts-0.5-18: Updated. Can we get away without the utmp group?
 	NOTE: You should have the latest funpkg installed. After upgrading
