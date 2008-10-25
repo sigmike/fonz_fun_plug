@@ -29,4 +29,6 @@ rm -rf share/{et,ss}
 # no package database in this package
 rm -rf var/packages
 
+# leave a version number
+date >etc/squeezecenter-funplug-version
 
