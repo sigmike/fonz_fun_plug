@@ -1,18 +1,10 @@
 #!/bin/bash
 cd $D/ffp
 
-
-# TODO:
-# install fun_plug.local
-# - user/group: slimserver
-# create mysql database
-
-
 # custom files
 install -m 0755 -o root -g root $X/fun_plug.local etc/
 install -m 0755 -o root -g root $X/reset-slimserver-database.sh sbin
 install -m 0755 -o root -g root $X/start-mysqld.sh start/mysqld.sh
-install -m 0755 -o root -g root $X/start-slimserver.sh start/slimserver.sh
 
 # start scripts
 #chmod a-x start/telnetd.sh

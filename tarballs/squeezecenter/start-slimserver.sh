@@ -14,25 +14,15 @@ stop_cmd="slimserver_stop"
 
 slimserver_start()
 {
-    # slimserver user and group
-    if ! grep -wq slimserver /etc/group; then
-	echo "Adding slimserver group"
-	groupadd -g 612 slimserver
-    fi
-    if ! grep -wq slimserver /etc/passwd; then
-	echo "Adding slimserver user"
-	useradd -u 612 -d /no/where -g slimserver -s /bin/false slimserver
-    fi
 
-	# create slimserver database
+	# create slimserver database if necessary
 	if [ ! -d /ffp/var/mysql/slimserver ]; then
 		/ffp/sbin/reset-slimserver-database.sh
 	fi
 
     cd $(dirname $command)
-
     # this su command uses busybox-specific syntax!
-    su slimserver -p -c "nohup ./$(basename $command) $slimserver_flags >/dev/null 2>&1 &"
+    su nobody -p -c "nohup ./$(basename $command) $slimserver_flags >/dev/null 2>&1 &"
 }
 
 slimserver_stop()
