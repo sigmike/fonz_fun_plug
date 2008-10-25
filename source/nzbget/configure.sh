@@ -1,3 +1,0 @@
-./configure \
-	LIBPREF="${CPREFIX}"
-
