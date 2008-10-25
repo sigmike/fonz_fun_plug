@@ -1,0 +1,28 @@
+# Set default language
+export LANG=en_US
+
+# Set default less options
+export LESS="-M"
+
+# If the user doesn't have a .inputrc, use the one in /etc.
+if [ ! -r "$HOME/.inputrc" ]; then
+	INPUTRC=/etc/inputrc
+fi
+export INPUTRC
+
+# Set the default system $PATH:
+export PATH=/ffp/sbin:/ffp/bin
+
+# Set TERM to linux for unknown type or unset variable:
+if [ "$TERM" = "" -o "$TERM" = "unknown" ]; then
+	TERM=linux
+fi
+export TERM
+
+# Set the default prompt
+export PS1='\u@\h:\w\$ '
+export PS2='> '
+
+# Set default umask
+umask 022
+
