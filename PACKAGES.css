@@ -1,0 +1,28 @@
+body {
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+.index {
+	width: 24%;
+	float: right;
+	#border-left: solid 1px black;
+	background-color: #f0f0f0;
+	padding-left: 1em;
+}
+
+.index a {
+	display: block;
+	text-decoration: none;
+}
+
+.packages {
+	#padding-left: 5%;
+	width: 65%;
+}
+
+.pkg + .pkg {
+	border-top: solid 1px black;
+}
+
+
