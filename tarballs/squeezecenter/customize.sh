@@ -3,7 +3,7 @@ cd $D/ffp
 
 # custom files
 install -m 0755 -o root -g root $X/fun_plug.local etc/
-install -m 0755 -o root -g root $X/reset-slimserver-database.sh sbin
+#install -m 0755 -o root -g root $X/reset-slimserver-database.sh sbin
 install -m 0755 -o root -g root $X/start-mysqld.sh start/mysqld.sh
 
 # start scripts
@@ -31,4 +31,19 @@ rm -rf var/packages
 
 # leave a version number
 date >etc/squeezecenter-funplug-version
+
+# add uninstall script
+mkdir -p sbin
+install -m 0755 -o root -g root $X/uninstall-ffp.sh sbin
+
+# add web interface
+install -m 0755 -o root -g root $X/start-ffp-admin.sh start/ffp-admin.sh
+install -m 0644 -o root -g root $X/ffp-admin.conf etc
+mkdir -p share/ffp-admin
+cp -r $X/htdocs share/ffp-admin
+rm -f share/ffp-admin/htdocs/*~
+chown -R root:root share/ffp-admin
+
+# disable telnet
+chmod a-x start/telnetd.sh
 

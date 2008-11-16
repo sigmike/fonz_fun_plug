@@ -14,8 +14,12 @@ mysqld_flags="--skip-networking --user=root"
 
 mysqld_start()
 {
-	/ffp/bin/mysqld_safe $mysqld_flags </dev/null &
-	sleep 10 # mysql takes some time to start up
+	if pidof mysqld >/dev/null 2>/dev/null; then
+		echo "Already running"
+	else
+		/ffp/bin/mysqld_safe $mysqld_flags </dev/null &
+		sleep 10 # mysql takes some time to start up
+	fi
 }
 
 mysqld_stop()

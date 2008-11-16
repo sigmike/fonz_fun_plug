@@ -1,0 +1,92 @@
+
+
+body {
+    font: bold 8pt sans-serif;
+
+    color: #a0a0ff;
+    background-color: black;
+
+    margin: 0 1em 0 1em;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+h1 {
+    font: 18pt serif;
+    font-style: italic;
+    color: #505050;
+}
+
+#title {
+    #color: #505050;
+    color: #303030;
+    text-align: right;
+}
+
+#menu {
+    float: left;
+    margin: 0;
+    padding: 0 5px 0 5px;
+    width: 160px;
+}
+
+#menu a {
+    display: block;
+}
+
+#menu a:hover {
+    background-color: #a0a0ff;
+}
+
+#menu ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.page {
+    left: 180px;
+    margin: 0;
+    padding: 0 5px 0 5px;
+
+    max-width: 95%;
+
+    overflow: auto;
+}
+
+.box {
+    padding: 1em 1em 1em 1em;
+    margin: 0 0 1em 0;
+    border: 1px solid #a0a0ff;
+
+    color: #a0a0ff;
+    background-color: #303030;
+}
+
+.page h2 {
+    margin-top: 0;
+    padding: 0.25em 0.25em 0.25em 0.25em;
+
+    font-size: 12pt;
+    font-variant: small-caps;
+    background-color: #303030;
+}
+
+.page th {
+    font-weight: normal;
+}
+
+.output {
+    padding: 1em 1em 1em 1em;
+    margin: 0 0 1em 0;
+    border: 1px solid #a0a0ff;
+    overflow: auto;
+
+    color: black;
+    background-color: white;
+    
+    font: 6pt sans-serif;
+}

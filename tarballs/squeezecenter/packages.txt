@@ -4,6 +4,8 @@ ffp-scripts
 rcorder
 shadow
 
+busybox-httpd
+
 db42
 expat
 gd
