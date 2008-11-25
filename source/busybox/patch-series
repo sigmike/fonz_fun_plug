@@ -1,2 +1,2 @@
-busybox-1.12.1-grep.patch
-busybox-1.12.1-modprobe.patch
+busybox-1.12.2-getopt.patch
+busybox-1.12.2-lineedit.patch

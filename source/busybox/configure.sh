@@ -17,26 +17,27 @@ bb_remove() {
 
 
 
-	# adjust config
-        cp $CONFDIR/$P.config .config
-        bb_set     "CONFIG_PREFIX" "$D$CPREFIX"
-        bb_enable  "CONFIG_INSTALL_NO_USR"
+# adjust config
+cp $X/config .config
 
-	# don't include the installer, we use
-	# our own script to create the links
-	bb_disable "CONFIG_FEATURE_INSTALLER"
+bb_set     "CONFIG_PREFIX" "$D$CPREFIX"
+bb_enable  "CONFIG_INSTALL_NO_USR"
 
-	# no, i really don't want that linuxrc thing
-	bb_disable "CONFIG_FEATURE_INITRD"
+# don't include the installer, we use
+# our own script to create the links
+bb_disable "CONFIG_FEATURE_INSTALLER"
 
-	# linux32/64 is also useless on the dns
-	bb_disable "CONFIG_SETARCH"
+# no, i really don't want that linuxrc thing
+bb_disable "CONFIG_FEATURE_INITRD"
 
-	# install symlinks
-        bb_enable  "CONFIG_INSTALL_APPLET_SYMLINKS"
-        bb_disable "CONFIG_INSTALL_APPLET_HARDLINKS"
-        bb_disable "CONFIG_INSTALL_APPLET_SCRIPT_WRAPPERS"
-        bb_disable "CONFIG_INSTALL_APPLET_DONT"
+# linux32/64 is also useless on the dns
+bb_disable "CONFIG_SETARCH"
+
+# install symlinks
+bb_enable  "CONFIG_INSTALL_APPLET_SYMLINKS"
+bb_disable "CONFIG_INSTALL_APPLET_HARDLINKS"
+bb_disable "CONFIG_INSTALL_APPLET_SCRIPT_WRAPPERS"
+bb_disable "CONFIG_INSTALL_APPLET_DONT"
 
 yes '' | make oldconfig
 
