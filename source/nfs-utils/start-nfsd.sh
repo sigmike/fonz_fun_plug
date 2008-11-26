@@ -16,7 +16,7 @@ nfsd_start()
 {
     exports=/ffp/etc/exports
 
-    if test ! -f $exports; then
+    if test ! -e $exports; then
         echo "Creating default exports file..."
         ip=$(ifconfig egiga0 | awk '/inet addr/ { print substr($2, 6) }')
         cnet=$(echo $ip | cut -d. -f1-3).0/24
