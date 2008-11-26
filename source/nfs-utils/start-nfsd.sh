@@ -43,6 +43,13 @@ nfsd_start()
         touch /var/lib/nfs/rmtab
     fi
 
+    if [ -d /proc/fs/nfsd ]; then
+	if ! mount | grep -wq nfsd; then
+	    echo "Mounting /proc/fs/nfsd ..."
+	    mount -t nfsd nfsd /proc/fs/nfsd
+	fi
+    fi
+
     proc_start /ffp/sbin/rpc.portmap
     proc_start /ffp/sbin/rpc.statd
     exportfs -r
