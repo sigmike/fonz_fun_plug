@@ -1,4 +1,15 @@
 +------------------------------------------------------------------------------+
+Thu Jan  8 19:54:34 CET 2009
+squeezecenter-7.3.1-1: Added.
++------------------------------------------------------------------------------+
+Sat Nov 29 12:19:26 CET 2008
+squeezecenter-7.2.1-1: Upgraded. This version doesn't need a separate
+	slimserver user and group anymore.
+busybox-httpd-1.12.2-1: Added.
++------------------------------------------------------------------------------+
+Thu Nov  6 14:48:08 CET 2008
+btpd: Removed. Package was broken and crashed too often.
++------------------------------------------------------------------------------+
 Sat Oct 25 12:59:37 CEST 2008
 nzbget-0.5.1-1: Removed. 
 libpar2-0.2-2: Removed. The package was broken. Please use the DNS-323
