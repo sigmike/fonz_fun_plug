@@ -2,7 +2,7 @@
 
 CWD=$(pwd)
 FUNPKG=$CWD/funpkg
-TAR=$(which tar-1.13)
+#TAR=$(which tar-1.13)
 X=$(readlink -f $1)
 
 die()
@@ -16,7 +16,7 @@ EOF
 [ -d "$X" ] || die "Usage: $(basename $0) <subdir>"
 [ -r "$X/packages.txt" ] || die "$X: packages.txt missing"
 [ -x "$FUNPKG" ] || die "funpkg not found"
-[ -x "$TAR" ] || die "tar-1.13 not found"
+#[ -x "$TAR" ] || die "tar-1.13 not found"
 [ $(id -u) -eq 0 ] || die "Must be root!"
 
 pkg_dirlist=(
