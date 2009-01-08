@@ -29,15 +29,20 @@ page()
     fi
     
     if netstat -tlnp 2>/dev/null | grep -w 80 | grep -wq webs; then
-	echo "<li>$(link "http://$host/" "Firmware Web Interface")</li>"
+	echo "<li>$(link "http://$host/" "D-Link Web Interface")</li>"
     fi
     
     if netstat -tlnp 2>/dev/null | grep -w 81 | grep -wq webs; then
-	echo "<li>$(link "http://$host:81/" "Firmware Web Interface")</li>"
+	echo "<li>$(link "http://$host:81/" "D-Link Web Interface")</li>"
     fi
     
     box_tail "</ul>"
 
+    box_head "Configure ...<ul>"
+    echo "<li>$(link "slimserver.cgi" "Slimserver")</li>"
+    echo "<li>$(link "telnetd.cgi"    "Telnet")</li>"
+    box_tail "</ul>"
+    
     # uninstall function
     box_head "To disable and remove the Fun-Plug, select"
     link "uninstall.cgi" "Uninstall Fun-Plug"
