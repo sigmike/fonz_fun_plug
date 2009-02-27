@@ -106,3 +106,6 @@ ffp on other devices:
 - Linksys WRT 350N wireless routers:
     http://www.linksysinfo.org/forums/showthread.php?t=57932
 
+- RaidSonic IB-NAS4220-B:
+    http://forum.nas-portal.org/showthread.php?t=3259
+
