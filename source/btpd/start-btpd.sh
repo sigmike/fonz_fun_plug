@@ -7,7 +7,7 @@
 
 name="btpd"
 command="/ffp/bin/$name"
-btpd_flags="-d /mnt/HD_a2/tmp/ --empty-start --logfile /mnt/HD_a2/tmp/btpd.log"
+btpd_flags="--empty-start"
 
 run_rc_command "$1"
 

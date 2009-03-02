@@ -1,7 +1,11 @@
-btpd is a bittorrent client consisting of a daemon and client commands,
-which can be used to read and/or manipulate the daemon state. The daemon
-is capable of running several torrents simultaneously and only uses one
-tcp port. It's fairly low on resource usage and should be perfect for a
-torrent distribution site. Efficient downloads and ease of use makes this
-client a good choice for the casual user as well.
-[pkgsrc]
+Btpd is a utility for sharing files over the BitTorrent network
+protocol. It runs in daemon mode, thus needing no controlling terminal
+or gui. Instead, the daemon is controlled by the btcli command line
+utility, or other programs capable of sending commands and queries on
+the btpd control socket.
+
+The goal is to provide a healthy alternative to the still prevailing
+ftp/http servers for file distribution sites and a good BitTorrent
+client for the casual user.
+
+[http://www.murmeldjur.se/btpd/]
