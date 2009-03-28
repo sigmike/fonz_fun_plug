@@ -1,1 +1,1 @@
-http://www.networkupstools.org/source/2.2/$P.tar.gz
+http://www.networkupstools.org/source/${PV%.*}/$P.tar.gz
