@@ -1,0 +1,11 @@
+--with-user=root
+--with-group=root
+--with-lib
+--sysconfdir=$CSYSCONFDIR
+--with-hotplug-dir=$CSYSCONFDIR/hotplug
+--with-udev-dir=$CSYSCONFDIR/udev
+--with-statepath=$CPREFIX/var/state/ups
+--with-cgi
+--with-cgipath=$CPREFIX/lib/$PN/cgi-bin
+--with-htmlpath=$CPREFIX/lib/$PN/html
+
