@@ -1,6 +1,5 @@
 FUN-PLUG 0.5
 
- WARNING: This funplug package is still beta!
  WARNING: You cannot use these packages with earlier funplug versions!
 
 
@@ -61,7 +60,7 @@ Release notes:
 - By default, the 0.5 funplug is installed to /mnt/HD_a2/ffp, but
   compiled with /ffp as prefix. The fun_plug script creates a symbolic
   link /ffp -> /mnt/HD_a2/ffp that allows the programs to run.  If you
-  move the funplug (e.g. to run on a USB stick), and adjust the
+  move the funplug (e.g. to run on a USB stick), adjust the
   FFP_PATH variable in the fun_plug script accordingly (don't forget
   to add code to mount the USB stick).
 
