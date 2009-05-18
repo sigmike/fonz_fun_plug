@@ -1,4 +1,11 @@
 +------------------------------------------------------------------------------+
+Sun May 17 23:13:56 CEST 2009
+php-5.2.9-1: Upgraded and moved to extra-packages. Added curl support.
+curl-7.19.4-1: Added.
++------------------------------------------------------------------------------+
+Mon Apr 13 14:13:05 CEST 2009
+lighttpd-1.4.22-1: Upgraded.
++------------------------------------------------------------------------------+
 Sat Apr 11 11:29:43 CEST 2009
 findutils-4.4.0-1: Upgraded. Also patched updatedb to use /ffp/tmp instead 
 	of /tmp (Thanks madpenguin)
