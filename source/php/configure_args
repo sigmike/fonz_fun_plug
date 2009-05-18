@@ -11,7 +11,7 @@
 --enable-sysvsem
 --enable-calendar=shared
 --enable-ctype=shared
---enable-libxml --enable-simple-xml --with-libxml-dir=$CPREFIX
+--enable-libxml --enable-simplexml --enable-soap --with-libxml-dir=$CPREFIX
 --enable-mbstring=shared --enable-mbregex
 --enable-pdo=shared
 --with-sqlite=shared --enable-sqlite-utf8 --with-pdo-sqlite=shared
@@ -25,6 +25,8 @@
 --enable-sigchild
 --enable-ftp=shared
 --with-gd=shared
+--with-curl=$CPREFIX
+--with-curlwrappers
 --with-jpeg-dir=$CPREFIX
 --with-png-dir=$CPREFIX
 
