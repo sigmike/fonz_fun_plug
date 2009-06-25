@@ -1,0 +1,6 @@
+This is a tiny replacement for squeezeCenter, the default server for
+squeezeboxes. This server will never match squeezeCenter in terms of
+features, but since it is much smaller and doesn't requires perl, it
+can be run on NAS devices and routers.
+
+  Homepage: http://code.google.com/p/squeezed/
