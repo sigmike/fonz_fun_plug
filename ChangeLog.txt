@@ -1,4 +1,23 @@
 +------------------------------------------------------------------------------+
+Thu Jun 25 19:19:11 CEST 2009
+netatalk-2.0.4-1: Upgraded.
+squeezed-r21-1: Added.
+squeezecenter-7.3.3-1: Upgraded.
++------------------------------------------------------------------------------+
+Fri May 29 11:58:58 CEST 2009
+taglib-1.5-1: Added. Needed for squeezed.
++------------------------------------------------------------------------------+
+Tue May 19 21:17:12 CEST 2009
+fun_plug: Rebuilt from latest packages. This hopefully fixes a few problems
+	caused by the introduction of the doinst.sh/*.new functions in recent
+	packages and funpkg.
+openssh-5.2p1-2: Updated. Minor modifications that, in the future, hopefully
+	work around the '/ffp/start/sshd.sh permissions reset on package
+	upgrade' problem. However, this upgrade requires that you reinstall
+	openssh after the upgrade!!!!!
+		funpkg -u openssh-5.2p1-2.tgz
+		funpkg -I openssh-5.2p1-2.tgz
++------------------------------------------------------------------------------+
 Sun May 17 23:13:56 CEST 2009
 php-5.2.9-1: Upgraded and moved to extra-packages. Added curl support.
 curl-7.19.4-1: Added.
