@@ -20,6 +20,16 @@ list_libs()
     tar tzf $1 | egrep '/lib/lib.*\.so'
 }
 
+newconf()
+{
+	cd $D/ffp/etc
+	for f in $(find -name \*.new); do
+		_cmd="mv $f ${f%.new}"
+		echo $_cmd
+		eval $_cmd
+	done
+}
+
 # set 1
 for p in $(cat $X/set1); do
 	pkg=$(find_pkg $p)
@@ -37,6 +47,9 @@ for p in $(cat $X/set2); do
 	info "    Installing $pkg ..."
 	list_libs $pkg | unpack_pkg $pkg -T -
 done
+
+# *.new
+newconf
 
 # busybox links
 pkg=$(find_pkg busybox)
