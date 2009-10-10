@@ -1,0 +1,9 @@
+fefe's Fortune
+
+Fortune is a small game that is meant to lighten up your life. It can
+be used to display a random entry from a cookie file.
+
+  Homepage: http://www.fefe.de/fortune/
+
+The package includes datfiles from DragonflyBSD downloaded from:
+  http://gitweb.dragonflybsd.org/dragonfly.git/tree/HEAD:/games/fortune/datfiles
