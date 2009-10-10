@@ -281,7 +281,7 @@ rm -rf $work
 
 # process packages
 while [ $# -gt 0 ]; do
-    cd $CWD
+    cd "$CWD"
     case $cmd in
 
         i)
