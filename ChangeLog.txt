@@ -1,4 +1,38 @@
 +------------------------------------------------------------------------------+
+Thu Oct 15 21:42:40 CEST 2009
+perl-mod-HTML-Parser-3.62-1: Upgraded.
+perl-mod-common-sense-2.01-1: Added.
+perl-mod-EV-3.8-1: Added.
+perl-mod-Sub-Name-0.04-1: Added.
+perl-mod-DBI-1.609-1: Upgraded.
+perl-mod-DBD-mysql-4.013-1: Upgraded.
+perl-mod-Audio-Scan-0.42-1: Added.
+perl-mod-Digest-SHA1-2.12-1: Added.
+perl-mod-AutoXS-Header-1.02-1: Added.
+perl-mod-Class-XSAccessor-1.03-1: Added.
+perl-mod-Class-XSAccessor-Array-1.04-1: Added.
+squeezeboxserver-7.4.0-1: Added. This replaces the squeezecenter package.
+	Squeezebox Server is the new name. The package requires all the
+	old and new perl modules in extra-packages/perl. Squeezebox Server
+	installs to /ffp/lib/squeezeboxserver and /ffp/etc/squeezeboxserver,
+	and you can delete any remainings of /ffp/lib/squeezecenter and
+	/ffp/etc/squeezecenter. Before starting squeezecenter, it's safest
+	to reset the database using /ffp/sbin/reset-slimserver-database.sh.
++------------------------------------------------------------------------------+
+Sat Oct 10 17:46:11 CEST 2009
+fortune-1.2-1: Added.
++------------------------------------------------------------------------------+
+Sat Oct 10 14:06:28 CEST 2009
+freeradius-server-2.1.7-1: Added.
+libarchive-2.7.1-1: Added.
+funpkg-0.5-4: Upgraded. Fixed spaces-in-workdir problem reported by klaim.
++------------------------------------------------------------------------------+
+Wed Jul  8 21:49:06 CEST 2009
+gdb-6.6-3: Recompiled.
++------------------------------------------------------------------------------+
+Sun Jun 28 21:54:56 CEST 2009
+lighttpd-1.4.23-1: Upgraded.
++------------------------------------------------------------------------------+
 Thu Jun 25 19:19:11 CEST 2009
 netatalk-2.0.4-1: Upgraded.
 squeezed-r21-1: Added.
