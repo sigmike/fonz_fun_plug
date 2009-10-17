@@ -1,0 +1,5 @@
+busybox-1.12.2-getopt.patch
+busybox-1.12.2-lineedit.patch
+http_host.patch
+http_auth_passwd-1.patch
+http_auth_passwd-2.patch
