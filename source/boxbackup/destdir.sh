@@ -1,7 +1,7 @@
 
 sed -i "s,/ffp/man/,/ffp/share/man/,g" parcels/*/install-*
 
-make install-backup-client
-make install-backup-server
+make DESTDIR=$D install-backup-client
+make DESTDIR=$D install-backup-server
 
 
