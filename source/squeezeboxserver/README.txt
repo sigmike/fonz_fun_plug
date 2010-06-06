@@ -51,3 +51,8 @@ Separated:
 
 perl-mod-Digest-SHA1
 
+
+Updates for 7.5.0
+
+perl-mod-Audio-Scan-0.79 (sbs needs 0.62)
+

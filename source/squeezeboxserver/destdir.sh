@@ -21,5 +21,10 @@ install -o root -g root -m 0755 \
 #install -o slimserver -g slimserver -m 0755 -d $D$CSYSCONFDIR/$pn/plugin
 
 
+# 7.5.0 needs to relax permissions
+cd $D
+find -type f | xargs chmod a+r
+find -type d | xargs chmod a+rx
+
 
 
