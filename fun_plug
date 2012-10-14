@@ -4,18 +4,18 @@
 cd /
 
 # write a log, in case sth goes wrong
-FFP_LOG=/mnt/HD_a2/ffp.log
+FFP_LOG=/mnt/HD/HD_a2/ffp.log
 #FFP_LOG=/dev/null
 exec >>$FFP_LOG 2>&1
 
 # real path to ffp
-FFP_PATH=/mnt/HD_a2/ffp
+FFP_PATH=/mnt/HD/HD_a2/ffp
 
 # where to search for the install tarball
-FFP_TARBALL=/mnt/HD_a2/fun_plug.tgz
+FFP_TARBALL=/mnt/HD/HD_a2/fun_plug.tgz
 
 # setup script (used for ffp on USB disk)
-FFP_SETUP_SCRIPT=/mnt/HD_a2/.bootstrap/setup.sh
+FFP_SETUP_SCRIPT=/mnt/HD/HD_a2/.bootstrap/setup.sh
 
 # rc file path
 FFP_RC=/ffp/etc/rc
