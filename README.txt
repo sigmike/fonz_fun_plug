@@ -13,9 +13,9 @@ FUN-PLUG 0.7
 
 Getting started
 
+  This is the "arm" version, for DNS-325 (and other EABI-based devices).
   For DNS-323 and CH3SNAS (and other OABI-based devices), use the
-  files from the oabi/ directory. For DNS-325 (and other EABI-based
-  devices), use the files from the arm/ directory.
+  "oabi" version.
 
   Copy fun_plug and fun_plug.tgz to Volume 1 and reboot. If
   successful, the fun_plug.tgz file is unpacked (ffp directory) and
