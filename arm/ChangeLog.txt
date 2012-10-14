@@ -1,0 +1,8 @@
++------------------------------------------------------------------------------+
+Fri Jan 27 19:55:56 CET 2012
+mysql-5.1.61-arm-2.txz: Upgraded. Added missing mysql.sh start script.
+	Thanks mati730.
++------------------------------------------------------------------------------+
+Wed Jan 25 09:24:21 CET 2012
+python-3.2.2-oarm-1.txz: Added
+git-1.7.8.4-oarm-1.txz: Added
