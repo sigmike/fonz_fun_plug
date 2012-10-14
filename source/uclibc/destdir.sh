@@ -1,3 +1,0 @@
-make PREFIX=$D V=1 UCLIBC_EXTRA_LDFLAGS="$LDFLAGS" CC="${CC}" install
-make PREFIX=$D V=1 UCLIBC_EXTRA_LDFLAGS="$LDFLAGS" CC="${CC}" install_utils
-

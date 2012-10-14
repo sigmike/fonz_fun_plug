@@ -1,5 +1,0 @@
---enable-elf-shlibs
---enable-dynamic-e2fsck
---disable-evms
---with-ldopts=\"$LDFLAGS\"
-

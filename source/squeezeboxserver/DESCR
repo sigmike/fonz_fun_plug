@@ -1,9 +1,0 @@
-Squeezebox Server (formerly SqueezeCenter) provides access to your
-music library through Logitech Squeezebox and Transporter® WiFi music
-players. Simply install Squeezebox Server on every computer you have
-music stored on, and your Squeezebox does the rest.
-
-Homepage: http://www.logitechsqueezebox.com/
-
-Squeezebox Server needs perl, the perl modules, and mysql.
-

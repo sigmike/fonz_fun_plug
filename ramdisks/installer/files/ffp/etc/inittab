@@ -1,4 +1,0 @@
-::sysinit:/ffp/etc/rc.sysinit
-::respawn:/ffp/sbin/getty -L ttyS0 115200 vt100
-::shutdown:/ffp/etc/rc.shutdown
-::ctrlaltdel:/ffp/sbin/reboot

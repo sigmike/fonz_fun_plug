@@ -1,6 +1,0 @@
---libdir=$CPREFIX/lib/$P
---program-prefix=""
---with-openssl
---with-pcre
---with-zlib
-

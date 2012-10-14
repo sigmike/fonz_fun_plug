@@ -1,5 +1,0 @@
---enable-nfsv4=no
---enable-gss=no
---enable-secure-statd
---disable-mount
-

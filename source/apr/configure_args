@@ -1,4 +1,0 @@
---prefix=$CPREFIX
---disable-static
---with-installbuilddir=$CPREFIX/lib/apr-${PV}/build-${PV%%.*}
---with-devrandom=/dev/urandom

@@ -1,7 +1,0 @@
-#!/ffp/bin/sh
-
-swapoff -a
-sync
-sleep 1
-umount -a -r
-sleep 1

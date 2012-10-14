@@ -1,5 +1,0 @@
--prefix=$CPREFIX
--confdir=$CPREFIX/etc
--mandir=$CPREFIX/share/man
-+lang none
-

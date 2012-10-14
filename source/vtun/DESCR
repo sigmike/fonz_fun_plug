@@ -1,8 +1,0 @@
-What is VTun ?
-VTun is the easiest way to create Virtual Tunnels over TCP/IP networks
-with traffic shaping, compression, and encryption. At least, we think
-so.  It supports IP, PPP, SLIP, Ethernet and other tunnel types.  VTun
-is easily and highly configurable, it can be used for various network
-tasks.
-
-[http://vtun.sourceforge.net/]

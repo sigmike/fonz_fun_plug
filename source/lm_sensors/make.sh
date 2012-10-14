@@ -1,2 +1,0 @@
-make PREFIX=${CPREFIX} ETCDIR=${CSYSCONFDIR} all
-

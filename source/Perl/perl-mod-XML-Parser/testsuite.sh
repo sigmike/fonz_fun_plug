@@ -1,2 +1,0 @@
-make -k test || true
-

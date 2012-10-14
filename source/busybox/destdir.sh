@@ -1,2 +1,0 @@
-make CC="${CC}" install
-

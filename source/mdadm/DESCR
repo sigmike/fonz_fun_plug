@@ -1,8 +1,0 @@
-mdadm is a tool for managing Linux Software RAID arrays.
-It can create, assemble, report on, and monitor arrays.
-It can also move spares between raid arrays when needed.
-FAQ and other documentation can be found at 
-  http://linux-raid.osdl.org/index.php/Main_Page
-
-[http://neil.brown.name/blog/mdadm]
-

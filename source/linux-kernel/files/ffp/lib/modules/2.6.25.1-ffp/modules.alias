@@ -1,8 +1,0 @@
-# Aliases extracted from modules themselves.
-alias aes aes_generic
-alias sha1 sha1_generic
-alias xfrm-mode-10-0 xfrm6_mode_transport
-alias sit0 sit
-alias xfrm-mode-10-1 xfrm6_mode_tunnel
-alias xfrm-mode-10-4 xfrm6_mode_beet
-alias char-major-10-229 fuse

@@ -1,4 +1,0 @@
---disable-debug
---disable-locale
---with-rsyncd-conf=$CPREFIX/etc/rsyncd.conf
-

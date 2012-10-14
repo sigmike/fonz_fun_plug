@@ -1,3 +1,0 @@
---without-bash-malloc
---with-installed-readline
-$CTARGET

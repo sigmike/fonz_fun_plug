@@ -1,4 +1,0 @@
---prefix=$CPREFIX
---with-ssl
---disable-static
---enable-shared

@@ -1,7 +1,0 @@
---sysconfdir=$CSYSCONFDIR
---without-pam
---without-insults
---with-editor=/ffp/bin/vi
---with-env-editor
---without-lecture
---with-timedir=$CPREFIX/var/run/sudo

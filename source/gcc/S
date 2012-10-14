@@ -1,1 +1,0 @@
-${PN}-$(echo ${PV} | tr . _)-branch

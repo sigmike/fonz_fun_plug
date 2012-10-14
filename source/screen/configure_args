@@ -1,2 +1,0 @@
---with-sys-screenrc=$CPREFIX/etc/screenrc
---enable-telnet

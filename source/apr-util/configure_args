@@ -1,4 +1,0 @@
---prefix=$CPREFIX
---with-apr=$CPREFIX
---disable-static
---without-sqlite2
