@@ -20,7 +20,7 @@ Change root's password and log in:
 
 Store the configuration:
 
-    wget http://wolf-u.li/u/172/ -O /ffp/sbin/store-passwd.sh
+    wget --no-check-certificate https://raw.github.com/piglop/fonz_fun_plug/dsl320-0.7/store-passwd.sh -O /ffp/sbin/store-passwd.sh
     store-passwd.sh
 
 Start SSH:
@@ -35,3 +35,8 @@ Try to connect to your NAS with SSH. If it works, disable telnet:
 And reboot your NAS or `killall telnetd`.
 
 You're done.
+
+To install packages, see http://dns323.kood.org/howto:ffp#slacker_sites
+
+
+
