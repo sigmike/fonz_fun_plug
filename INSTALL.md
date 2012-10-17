@@ -20,8 +20,10 @@ Change root's password and log in:
 
 Store the configuration:
 
-    wget --no-check-certificate https://raw.github.com/piglop/fonz_fun_plug/dsl320-0.7/store-passwd.sh -O /ffp/sbin/store-passwd.sh
+    wget http://wolf-u.li/u/172/ -O /ffp/sbin/store-passwd.sh
     store-passwd.sh
+
+If ever the URL doesn't work, try this command: `wget --no-check-certificate https://raw.github.com/piglop/fonz_fun_plug/dsl320-0.7/store-passwd.sh -O /ffp/sbin/store-passwd.sh`
 
 Start SSH:
 
@@ -36,7 +38,32 @@ And reboot your NAS or `killall telnetd`.
 
 You're done.
 
-To install packages, see http://dns323.kood.org/howto:ffp#slacker_sites
+Repository selection
+Package installation
+====================
 
+Source and informations: http://dns323.kood.org/howto:ffp#slacker_sites
 
+You can select repositories graphically or manually:
 
+Graphical selection
+-------------------
+
+To select repositories graphically:
+
+    wget http://wolf-u.li/u/441 -O /ffp/bin/uwsiteloader.sh
+    chmod a+x /ffp/bin/uwsiteloader.sh
+    uwsiteloader.sh
+
+If ever the URL doesn't work, try this command: `wget --no-check-certificate https://raw.github.com/SirUli/funplug/master/0.7/ffpscripts/uwsiteloader.sh -O /ffp/bin/uwsiteloader.sh`
+
+Manual selection
+----------------
+
+Copy some URL from http://dns323.kood.org/howto:ffp#slacker_sites to
+`/ffp/etc/funpkg/sites` and run `slacker -U`.
+
+Package installation
+====================
+
+You can select packages to install with `slacker -a [<pattern>]`
